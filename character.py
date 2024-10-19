@@ -1,0 +1,11 @@
+characterAncestry = "Elf"
+characterBackground = ""
+characterClass = ""
+str = 0
+con = 0
+dex = 0
+int = 0
+wis = 0
+cha = 0
+health = 0
+moveSpeed = 0
