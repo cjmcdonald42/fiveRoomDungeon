@@ -2,6 +2,8 @@
 #     author: Charles J McDonald «cmcdonald@woonsocketschools.com»
 #       date: 11/07/2024
 #    version: 0.1 indev
+from random import random
+
 from colorama.ansi import clear_screen
 
 # Player character sheet
@@ -10,6 +12,7 @@ playerAncestry = ""
 playerAncestryAdj = ""
 playerBackground = ""
 playerClass = ""
+playerClassName = ""
 playerStrength = 0
 playerDexterity = 0
 playerConstitution = 0
@@ -33,9 +36,9 @@ playerAncestry = input("Will you be a [H]uman, a [D]warf or an [E]lf? : ")
 # Create a human character
 if playerAncestry == "H":
     print('''
-        As a human, you get two free Boosts
-        You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
-    ''')
+As a human, you get two free Boosts
+You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
+''')
     playerAncestryAdj = "Human"
     playerSpeed = 25
     playerHealth = 8
@@ -64,11 +67,11 @@ if playerAncestry == "H":
 elif playerAncestry == "D":
     playerAncestryAdj = "Dwarven"
     print('''
-        As a dwarf, you take a penalty to Charisma.
-        You can boost your Constitution or your Strength and you get one free boost.
-        [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
-      
-        Your Speed is 20 feet per round and you start with 10 Health.
+As a dwarf, you take a penalty to Charisma.
+You can boost your Constitution or your Strength and you get one free boost.
+[S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
+
+Your Speed is 20 feet per round and you start with 10 Health.
     ''')
     playerBoost1 = input("Would you like to boost your [C]onstitution or your [S]trength? : ")
     playerBoost2 = input("And you get to boost one more attribute: ")
@@ -92,11 +95,11 @@ elif playerAncestry == "D":
 elif playerAncestry == "E":
     playerAncestryAdj = "Elven"
     print('''
-        As an elf, you take a penalty to Strength.
-        You can boost your Dexterity or your Intelligence and you get one free boost.
-        [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
-        
-        Your Speed is 30 feet per round and you start with 6 Health.
+As an elf, you take a penalty to Strength.
+You can boost your Dexterity or your Intelligence and you get one free boost.
+[S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
+
+Your Speed is 30 feet per round and you start with 6 Health.
     ''')
     playerBoost1 = input("Would you like to boost your [D]exterity or your [I]ntelligence? : ")
     playerBoost2 = input("And you get to boost one more attribute: ")
@@ -144,12 +147,12 @@ elif playerBoost2 == "Ch":
 
 # Choose a class
 print('''
-    Your class describes your training and the skills you use to solve problems.
-    Were you trained as a:
-        [F]ighter       [C]leric
-        [W]izard        [R]ogue
-    
-    You also get four free boosts.
+Your class describes your training and the skills you use to solve problems.
+Were you trained as a:
+    [F]ighter       [C]leric
+    [W]izard        [R]ogue
+
+You also get four free boosts.
 ''')
 playerClass = input("Choose a class: ")
 playerBoost1 = input("Choose your first free boost: ")
@@ -173,15 +176,19 @@ if playerBoost1 == "Ch" or playerBoost2 == "Ch" or playerBoost3 == "Ch" or playe
 
 # Each class boosts a key ability score
 if playerClass == "F":
+    playerClassName = "Fighter"
     playerStrength += 1
     playerAttack = playerStrength
 elif playerClass == "W":
+    playerClassName = "Wizard"
     playerIntelligence += 1
     playerAttack = playerIntelligence
 elif playerClass == "C":
+    playerClassName = "Cleric"
     playerWisdom += 1
     playerAttack = playerWisdom
 elif playerClass == "R":
+    playerClassName = "Rogue"
     playerDexterity += 1
     playerAttack = playerDexterity
 
@@ -189,21 +196,23 @@ elif playerClass == "R":
 playerInititive = playerWisdom
 
 def displayCharacterSheet():
-    os.system(clear_screen())
+    clear_screen()
     print(f'''
-    == Character Sheet for {playerName} ==
-        Level 1 {playerAncestryAdj} {playerClass}
-        Strength: {playerStrength}   Constitution: {playerConstitution}   Dexterity: {playerDexterity}
-        Wisdom: {playerWisdom}   Intelligence: {playerIntelligence}   Charisma: {playerCharisma}
-        
-        Speed: {playerSpeed}    Health: {playerHealth}
-    ----- \n    
+== Character Sheet for {playerName} ==
+    Level 1 {playerAncestryAdj} {playerClassName}
+    Strength: {playerStrength}   Constitution: {playerConstitution}   Dexterity: {playerDexterity}
+    Wisdom: {playerWisdom}   Intelligence: {playerIntelligence}   Charisma: {playerCharisma}
+    
+    Speed: {playerSpeed}    Health: {playerHealth}
+    -----
     ''')
 
-
 # Let's begin our Story
-print('''                # TODO Write some stuff here...
-
+print('''
+Traveling merchants often describe seeing caves in the cliffs south of town as they ride up from the village of
+Honeywood. The pass along the shore is the fastest route but those caves are the reason they want to reach the town
+gates before dark. The caves exude a dark, foreboding feeling that sends a shiver up one’s spine just thinking about
+the dangers that lurk there and one can’t help but notice a stench that makes their pack mules uneasy.
 ''')
 
 nowInRoom = 1
@@ -212,87 +221,89 @@ while exploringTheDungeon is True:
     if nowInRoom == 1:
         # Describe the room
         print('''
-        The cave entrance looms before you, a dark maw set into the rugged hillside. Vines and moss cling to the
-        rocky edges, and a faint, cool breeze carries the scent of damp earth from within. The shadows inside seem
-        to shift and beckon, hinting at the mysteries and dangers that lie ahead. You notice a pile of rags in one
-        corner and the cave continues east into the darkness.
+The cave entrance looms before you, a dark maw set into the rugged hillside. Vines and moss cling to the
+rocky edges, and a faint, cool breeze carries the scent of damp earth from within. The shadows inside seem
+to shift and beckon, hinting at the mysteries and dangers that lie ahead. You notice a pile of rags in one
+corner and the cave continues east into the darkness.
         ''')
 
         # Offer some options
         print('''
-        You can [L]eave the dungeon, [S]earch the rags, [E]xamine the vines, or [G]o deeper into the caves.
-        Type [C] to view your character sheet.
+You can [L]eave the dungeon, [S]earch the rags, [E]xamine the vines, or [G]o deeper into the caves.
+Type [C] to view your character sheet.
         ''')
         playerAction = input("What would you like to do? : ")
         if playerAction == "L":                                 # Run away!!!
             print('''
-            The darkening cave light and the wafting stench from ahead paints a grim image of your future.
-            With a load and stoic "NOPE" you turn and leave the cave.
-            
-            Perhaps you'll reconsider? 
+The darkening cave light and the wafting stench from ahead paints a grim image of your future.
+With a load and stoic "NOPE" you turn and leave the cave.
+
+Perhaps you'll reconsider? 
             ''')
         elif playerAction == "S":                               # Search the rags
             print('''
-            Searching the rags reveals some torches that can be used to light your way.
-            You also find a vial of red liquid that seems to glow with an inner holiness.
-            Drinking this will restore some health!
+Searching the rags reveals some torches that can be used to light your way.
+You also find a vial of red liquid that seems to glow with an inner holiness.
+Drinking this will restore some health!
             ''')
             hasTorches = True
             hasPotion = True
 
         elif playerAction == "E":                               # Examine the room
             print('''
-            Cutting back the vines reveals some runic writing painted on the wall along with images
-            of a large, feathered beast with terrible claws.
+Cutting back the vines reveals some runic writing painted on the wall along with images
+of a large, feathered beast with terrible claws.
             ''')
         elif playerAction == "G":
-            print('''
-            Go east to room 2
-            ''')
             nowInRoom = 2
         elif playerAction == "C": displayCharacterSheet()       # Show the character sheet
         else:
             print("That's not a valid option.")
 
-
-            # Examine the Room
-            # Do some shit
-    elif nowInRoom == 2:
+    elif nowInRoom == 2:                                        # Moving into room 2
         # Describe the room
+        print('''
+As you cautiously make your way down the narrow east passageway, the air grows colder and the light dims.
+Suddenly, you hear the scurrying of tiny feet and the glint of eyes reflecting in the darkness. Before you can react,
+a pack of giant rats emerges from the shadows, their teeth bared and eyes gleaming with hunger.
+        ''')
         # Offer some options
+        print('''
+You can use your [T]orch to attempt to ward off the rats. [A]ttack the rats.
+Go back to the [W]est, Travel [E]ast or [S]outh
+Type [C] to view your character sheet.
+        ''')
+        playerAction = input("What would you like to do? : ")
+        if playerAction == "T":                                 # brandish your torch
+            diceRoll = random.randint(1, 20) + playerDexterity  # Roll a d20 and add DEX
+            print("You brandish your torch, waving the flame in front of the rats to ward them off.")
+            if diceRoll >= 12
+
+
         # Show the character sheet
         # Examine the Room
         # Do some shit
     elif nowInRoom == 3:
+        pass
         # Describe the room
         # Offer some options
         # Show the character sheet
         # Examine the Room
         # Do some shit
     elif nowInRoom == 4:
+        pass
         # Describe the room
         # Offer some options
         # Show the character sheet
         # Examine the Room
         # Do some shit
     elif nowInRoom == 5:
+        pass
         # Describe the room
         # Offer some options
         # Show the character sheet
         # Examine the Room
         # Do some shit
 
-
-    # Room 1
-
-
-
-# Room 2
-
-# Room 3
-
-# Room 4
-
-# Room 5
 
 # Epilog
