@@ -3,7 +3,7 @@
 
 Canonical URL:  https://creativecommons.org/licenses/by-nc-sa/4.0/
 
-![CC BY-NC-SA 4.0](CCBYNCSA.png)
+![CC BY-NC-SA 4.0](/assets/CCBYNCSA_half.png)
 
 ## You are free to:
 
