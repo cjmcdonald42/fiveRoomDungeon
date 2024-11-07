@@ -1,11 +1,13 @@
 #    package: fiveRoomDungeon.py
 #     author: Charles J McDonald «cmcdonald@woonsocketschools.com»
-#       date: 11/04/2024
+#       date: 11/07/2024
 #    version: 0.1 indev
+from colorama.ansi import clear_screen
 
 # Player character sheet
 playerName = ""
 playerAncestry = ""
+playerAncestryAdj = ""
 playerBackground = ""
 playerClass = ""
 playerStrength = 0
@@ -18,6 +20,8 @@ playerHealth = 0
 playerSpeed = 0
 playerInititive = 0
 playerAttack = 0
+hasTorches = False
+hasPotion = False
 
 # Introduction to the Game
 print("You awaken in a strange land. So far away and yet so long ago...")
@@ -32,6 +36,7 @@ if playerAncestry == "H":
         As a human, you get two free Boosts
         You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
     ''')
+    playerAncestryAdj = "Human"
     playerSpeed = 25
     playerHealth = 8
     isChoosing = True
@@ -57,6 +62,7 @@ if playerAncestry == "H":
 
 # Create a dwarven character
 elif playerAncestry == "D":
+    playerAncestryAdj = "Dwarven"
     print('''
         As a dwarf, you take a penalty to Charisma.
         You can boost your Constitution or your Strength and you get one free boost.
@@ -84,6 +90,7 @@ elif playerAncestry == "D":
 
 # Create an elven character
 elif playerAncestry == "E":
+    playerAncestryAdj = "Elven"
     print('''
         As an elf, you take a penalty to Strength.
         You can boost your Dexterity or your Intelligence and you get one free boost.
@@ -181,12 +188,104 @@ elif playerClass == "R":
 # Your initiative is your Wisdom bonus
 playerInititive = playerWisdom
 
+def displayCharacterSheet():
+    os.system(clear_screen())
+    print(f'''
+    == Character Sheet for {playerName} ==
+        Level 1 {playerAncestryAdj} {playerClass}
+        Strength: {playerStrength}   Constitution: {playerConstitution}   Dexterity: {playerDexterity}
+        Wisdom: {playerWisdom}   Intelligence: {playerIntelligence}   Charisma: {playerCharisma}
+        
+        Speed: {playerSpeed}    Health: {playerHealth}
+    ----- \n    
+    ''')
+
+
 # Let's begin our Story
-print('''
+print('''                # TODO Write some stuff here...
 
 ''')
 
-# Room 1
+nowInRoom = 1
+exploringTheDungeon = True
+while exploringTheDungeon is True:
+    if nowInRoom == 1:
+        # Describe the room
+        print('''
+        The cave entrance looms before you, a dark maw set into the rugged hillside. Vines and moss cling to the
+        rocky edges, and a faint, cool breeze carries the scent of damp earth from within. The shadows inside seem
+        to shift and beckon, hinting at the mysteries and dangers that lie ahead. You notice a pile of rags in one
+        corner and the cave continues east into the darkness.
+        ''')
+
+        # Offer some options
+        print('''
+        You can [L]eave the dungeon, [S]earch the rags, [E]xamine the vines, or [G]o deeper into the caves.
+        Type [C] to view your character sheet.
+        ''')
+        playerAction = input("What would you like to do? : ")
+        if playerAction == "L":                                 # Run away!!!
+            print('''
+            The darkening cave light and the wafting stench from ahead paints a grim image of your future.
+            With a load and stoic "NOPE" you turn and leave the cave.
+            
+            Perhaps you'll reconsider? 
+            ''')
+        elif playerAction == "S":                               # Search the rags
+            print('''
+            Searching the rags reveals some torches that can be used to light your way.
+            You also find a vial of red liquid that seems to glow with an inner holiness.
+            Drinking this will restore some health!
+            ''')
+            hasTorches = True
+            hasPotion = True
+
+        elif playerAction == "E":                               # Examine the room
+            print('''
+            Cutting back the vines reveals some runic writing painted on the wall along with images
+            of a large, feathered beast with terrible claws.
+            ''')
+        elif playerAction == "G":
+            print('''
+            Go east to room 2
+            ''')
+            nowInRoom = 2
+        elif playerAction == "C": displayCharacterSheet()       # Show the character sheet
+        else:
+            print("That's not a valid option.")
+
+
+            # Examine the Room
+            # Do some shit
+    elif nowInRoom == 2:
+        # Describe the room
+        # Offer some options
+        # Show the character sheet
+        # Examine the Room
+        # Do some shit
+    elif nowInRoom == 3:
+        # Describe the room
+        # Offer some options
+        # Show the character sheet
+        # Examine the Room
+        # Do some shit
+    elif nowInRoom == 4:
+        # Describe the room
+        # Offer some options
+        # Show the character sheet
+        # Examine the Room
+        # Do some shit
+    elif nowInRoom == 5:
+        # Describe the room
+        # Offer some options
+        # Show the character sheet
+        # Examine the Room
+        # Do some shit
+
+
+    # Room 1
+
+
 
 # Room 2
 
