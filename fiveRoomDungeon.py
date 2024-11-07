@@ -3,7 +3,6 @@
 #       date: 11/07/2024
 #    version: 0.1 indev
 from random import random
-
 from colorama.ansi import clear_screen
 
 # Player character sheet
@@ -216,6 +215,8 @@ the dangers that lurk there and one can’t help but notice a stench that makes 
 ''')
 
 nowInRoom = 1
+foe2IsVanquished = False
+foe2Health = 6
 exploringTheDungeon = True
 while exploringTheDungeon is True:
     if nowInRoom == 1:
@@ -262,27 +263,60 @@ of a large, feathered beast with terrible claws.
 
     elif nowInRoom == 2:                                        # Moving into room 2
         # Describe the room
-        print('''
-As you cautiously make your way down the narrow east passageway, the air grows colder and the light dims.
+        print("As you cautiously make your way down the narrow east passageway, the air grows colder and the light dims.")
+        if foe2IsVanquished is False:
+            print('''
 Suddenly, you hear the scurrying of tiny feet and the glint of eyes reflecting in the darkness. Before you can react,
 a pack of giant rats emerges from the shadows, their teeth bared and eyes gleaming with hunger.
-        ''')
+            ''')
+
         # Offer some options
-        print('''
-You can use your [T]orch to attempt to ward off the rats. [A]ttack the rats.
-Go back to the [W]est, Travel [E]ast or [S]outh
+        print("You can: Use your [T]orch to attempt to ward off the rats", end="")
+        if foe2IsVanquished=False:
+            print("or [A]ttack the rats.")
+        print('''Go back to the [W]est, Travel [E]ast or [S]outh
 Type [C] to view your character sheet.
         ''')
         playerAction = input("What would you like to do? : ")
+
         if playerAction == "T":                                 # brandish your torch
-            diceRoll = random.randint(1, 20) + playerDexterity  # Roll a d20 and add DEX
+            diceRoll = random.randint(1, 20) + playerStrength  # Roll a d20 and add STR, DC = 15
             print("You brandish your torch, waving the flame in front of the rats to ward them off.")
             if diceRoll >= 12
+                print("The rats are frightened by your intimidating presence, and of course the fire, and scurry away.")
+                foeIsVanquished = True
+            else:
+                print("The rats remain unimpressed by your ineffectual display!")
+        elif playerAction == "A":                               # Attack the rats
+            diceRoll = random.randint(1, 20) + playerAttack
+            if diceRoll >= 12:
+                if playerClass = "F":
+                    playerDamage = random.randint(1, 8) + 2
+                    print(f"You swing your sword and strike the rats, doing {playerDamage}.")
+                if playerClass = "W":
+                    playerDamage = random.randint(1, 8) + 2
+                    print(f"You cast a magic spell and strike the rats, doing {playerDamage}.")
+                if playerClass = ("R"):
+                    playerDamage = random.randint(1, 4) + random.randint(1, 4)+ 2
+                    print(f"You sneak up on the rats and strike, doing {playerDamage}.")
+                if playerClass = ("C"):
+                    playerDamage = random.randint(1, 8) + 2
+                    print(f"You call upon your divine will to strike the rats, doing {playerDamage}.")
+                foe2Health -= playerDamage
+                if foe2Health <= 0:
+                    print("The rats are vanquished!")
+                    foe2IsVanquished = True
+        elif playerAction == "W":
+            nowInRoom = 1
+        elif playerAction == "E":
+            nowInRoom = 3
+        elif playerAction == "S":
+            nowInRoom = 4
+        elif playerAction == "C": displayCharacterSheet()
+        else:
+            print("That's not a valid option.")
 
 
-        # Show the character sheet
-        # Examine the Room
-        # Do some shit
     elif nowInRoom == 3:
         pass
         # Describe the room
