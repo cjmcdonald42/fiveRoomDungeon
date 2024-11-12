@@ -272,7 +272,7 @@ a pack of giant rats emerges from the shadows, their teeth bared and eyes gleami
 
         # Offer some options
         print("You can: Use your [T]orch to attempt to ward off the rats", end="")
-        if foe2IsVanquished=False:
+        if foe2IsVanquished == False:
             print("or [A]ttack the rats.")
         print('''Go back to the [W]est, Travel [E]ast or [S]outh
 Type [C] to view your character sheet.
@@ -293,24 +293,27 @@ Type [C] to view your character sheet.
                 if playerClass = "F":
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You swing your sword and strike the rats, doing {playerDamage}.")
-                if playerClass = "W":
+                elif playerClass = "W":
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You cast a magic spell and strike the rats, doing {playerDamage}.")
-                if playerClass = ("R"):
+                elif playerClass = ("R"):
                     playerDamage = random.randint(1, 4) + random.randint(1, 4)+ 2
                     print(f"You sneak up on the rats and strike, doing {playerDamage}.")
-                if playerClass = ("C"):
+                elif playerClass = ("C"):
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You call upon your divine will to strike the rats, doing {playerDamage}.")
                 foe2Health -= playerDamage
                 if foe2Health <= 0:
-                    print("The rats are vanquished!")
+                    print("The rat swarm is vanquished!")
                     foe2IsVanquished = True
         elif playerAction == "W":
+            # describe moving to Room 1
             nowInRoom = 1
         elif playerAction == "E":
+            # describe moving to Room 3
             nowInRoom = 3
         elif playerAction == "S":
+            # describe moving to Room 4
             nowInRoom = 4
         elif playerAction == "C": displayCharacterSheet()
         else:
@@ -338,6 +341,5 @@ Type [C] to view your character sheet.
         # Show the character sheet
         # Examine the Room
         # Do some shit
-
 
 # Epilog
