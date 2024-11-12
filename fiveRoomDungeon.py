@@ -1,6 +1,6 @@
 #    package: fiveRoomDungeon.py
 #     author: Charles J McDonald «cmcdonald@woonsocketschools.com»
-#       date: 11/07/2024
+#       date: 11/13/2024
 #    version: 0.1 indev
 from random import random
 from colorama.ansi import clear_screen
