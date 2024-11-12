@@ -1,7 +1,10 @@
-#    package: fiveRoomDungeon.py
-#     author: Charles J McDonald «cmcdonald@woonsocketschools.com»
-#       date: 11/13/2024
-#    version: 0.1 indev
+"""
+    package: fiveRoomDungeon.py
+     author: Charles J McDonald «cmcdonald@woonsocketschools.com»
+       date: 11/13/2024
+    version: 0.1 indev
+"""
+
 from random import random
 from colorama.ansi import clear_screen
 
@@ -282,7 +285,7 @@ Type [C] to view your character sheet.
         if playerAction == "T":                                 # brandish your torch
             diceRoll = random.randint(1, 20) + playerStrength  # Roll a d20 and add STR, DC = 15
             print("You brandish your torch, waving the flame in front of the rats to ward them off.")
-            if diceRoll >= 12
+            if diceRoll >= 12:
                 print("The rats are frightened by your intimidating presence, and of course the fire, and scurry away.")
                 foeIsVanquished = True
             else:
@@ -290,16 +293,16 @@ Type [C] to view your character sheet.
         elif playerAction == "A":                               # Attack the rats
             diceRoll = random.randint(1, 20) + playerAttack
             if diceRoll >= 12:
-                if playerClass = "F":
+                if playerClass == "F":
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You swing your sword and strike the rats, doing {playerDamage}.")
-                elif playerClass = "W":
+                elif playerClass == "W":
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You cast a magic spell and strike the rats, doing {playerDamage}.")
-                elif playerClass = ("R"):
+                elif playerClass == ("R"):
                     playerDamage = random.randint(1, 4) + random.randint(1, 4)+ 2
                     print(f"You sneak up on the rats and strike, doing {playerDamage}.")
-                elif playerClass = ("C"):
+                elif playerClass == ("C"):
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You call upon your divine will to strike the rats, doing {playerDamage}.")
                 foe2Health -= playerDamage
