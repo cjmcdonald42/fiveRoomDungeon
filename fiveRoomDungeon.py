@@ -313,7 +313,7 @@ Type [C] to view your character sheet.
                     playerHealth -= 2
                     if playerHealth <= 0:
                         print(f"The rats swarm you and do 2 points of damage. You fall down and the world goes dark.")
-                    else
+                    else:
                         print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
         elif playerAction == "W":                               # describe moving to Room 1
             if foe2IsVanquished is False:
@@ -335,14 +335,52 @@ Type [C] to view your character sheet.
         else:
             print("That's not a valid option.")
 
-
-    elif nowInRoom == 3:
-        pass
+    elif nowInRoom == 3:                                        # Moving into room 3
         # Describe the room
+        print("""Venturing deeper into the cave, you find yourself in a small, unexpected garden oasis.
+        The air is filled with the sweet scent of blooming flowers, and a gentle stream trickles nearby.
+        Light shines in through a hole in the cave roof. Amidst the lush greenery, a lone skeleton sits propped
+        against a stone, its bony fingers tightly clutching an ancient coffer. The scene is eerily serene, yet the
+        presence of the skeleton hints at untold stories and hidden dangers.
+        """)
         # Offer some options
-        # Show the character sheet
-        # Examine the Room
-        # Do some stuff
+        print("""You can s[M]ell the flowers, [D]rink from the stream, [E]xamine the skeleton.
+        Travel [W]est or [S]outh. [I]nspect the coffer or Type [C] to view your character sheet.
+        """)
+        playerAction = input("What would you like to do? : ")
+        if playerAction == "C": displayCharacterSheet()
+        elif playerAction == "S":
+            nowInRoom = 5
+        elif playerAction == "W":
+            nowInRoom = 2
+        elif playerAction == "M":
+            print("You plant your nose in the flowers and take in a deep breath. Ahhhhh, you exclaim.")
+        elif playerAction == "D":
+            print("""You bend down and lap some fresh water from the babbling stream.
+            Absolutely nothing untoward happens... that you know of...""")
+        elif playerAction == "E":
+            diceRoll = random.randint(1, 20) + playerWisdom
+            if diceRoll >= 8:
+                print(f"""You roll {diceRoll} perception.
+                Inspecting the skeleton, can tell that this once-adventurer fell to some beast, long forgotten.
+                Their body shows signs of quite a struggle that ultimately ended with some very sharp claws.
+                """)
+            else:
+                print("This skeleton has been here for quite some time. I wonder what killed them?")
+        elif playerAction == "I":
+            print("The coffer is held tightly in the skeleton's grasp... perhaps you could pry it loose?")
+            playerAction = input("Sure, let's try to pry it [L]oose: ")
+            if playerAction == "L":
+                diceRoll = random.randint(1, 20) + playerStrength
+                if diceRoll >= 12:
+                    print(f"""You roll a {diceRoll}!
+With your brutish strength, you pry the coffer from the skeleton's bony hands and easily open it.
+The coffer contains 50 pieces of the kings gold coin - more than enough to make this trip a
+financial success!""")
+                else:
+                    print(f"""You roll a {diceRoll}.
+Try as you might, you just can't wrest the coffer from the skeleton's grasp.""")
+
     elif nowInRoom == 4:
         pass
         # Describe the room
