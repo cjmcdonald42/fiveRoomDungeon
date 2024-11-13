@@ -299,25 +299,38 @@ Type [C] to view your character sheet.
                 elif playerClass == "W":
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You cast a magic spell and strike the rats, doing {playerDamage}.")
-                elif playerClass == ("R"):
+                elif playerClass == "R":
                     playerDamage = random.randint(1, 4) + random.randint(1, 4)+ 2
                     print(f"You sneak up on the rats and strike, doing {playerDamage}.")
-                elif playerClass == ("C"):
+                elif playerClass == "C":
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You call upon your divine will to strike the rats, doing {playerDamage}.")
                 foe2Health -= playerDamage
                 if foe2Health <= 0:
                     print("The rat swarm is vanquished!")
                     foe2IsVanquished = True
-        elif playerAction == "W":
-            # describe moving to Room 1
-            nowInRoom = 1
-        elif playerAction == "E":
-            # describe moving to Room 3
-            nowInRoom = 3
-        elif playerAction == "S":
-            # describe moving to Room 4
-            nowInRoom = 4
+                else:
+                    playerHealth -= 2
+                    if playerHealth <= 0:
+                        print(f"The rats swarm you and do 2 points of damage. You fall down and the world goes dark.")
+                    else
+                        print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
+        elif playerAction == "W":                               # describe moving to Room 1
+            if foe2IsVanquished is False:
+                print("You cannot retreat while in combat with the rats.")
+            else:
+                nowInRoom = 1
+                print("You return from whence you cam heading out of the dungeon")
+        elif playerAction == "E":                               # describe moving to Room 3
+            if foe2IsVanquished is False:
+                print("You cannot retreat while in combat with the rats.")
+            else:
+                nowInRoom = 3
+        elif playerAction == "S":                               # describe moving to Room 4
+            if foe2IsVanquished is False:
+                print("You cannot retreat while in combat with the rats.")
+            else:
+                nowInRoom = 4
         elif playerAction == "C": displayCharacterSheet()
         else:
             print("That's not a valid option.")
@@ -329,20 +342,20 @@ Type [C] to view your character sheet.
         # Offer some options
         # Show the character sheet
         # Examine the Room
-        # Do some shit
+        # Do some stuff
     elif nowInRoom == 4:
         pass
         # Describe the room
         # Offer some options
         # Show the character sheet
         # Examine the Room
-        # Do some shit
+        # Do some stuff
     elif nowInRoom == 5:
         pass
         # Describe the room
         # Offer some options
         # Show the character sheet
         # Examine the Room
-        # Do some shit
+        # Do some stuff
 
 # Epilog
