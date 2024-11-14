@@ -33,8 +33,7 @@ print('''
 Traveling merchants often describe seeing caves in the cliffs south of town as they ride up from the village of
 Honeywood. The pass along the shore is the fastest route but those caves are the reason they want to reach the town
 gates before dark. The caves exude a dark, foreboding feeling that sends a shiver up one’s spine just thinking about
-the dangers that lurk there and one can’t help but notice a stench that makes their pack mules uneasy.
-''')
+the dangers that lurk there and one can’t help but notice a stench that makes their pack mules uneasy.''')
 playerName = input("Tell me, brave adventurer, by what name are you known in these lands? : ")
 
 # Character Creation
@@ -44,8 +43,7 @@ playerAncestry = input("Will you be a [H]uman, a [D]warf or an [E]lf? : ")
 if playerAncestry == "H":
     print('''
 As a human, you get two free Boosts
-You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
-''')
+You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma''')
     playerAncestryAdj = "Human"
     playerSpeed = 25
     playerHealth = 8
@@ -78,8 +76,7 @@ As a dwarf, you take a penalty to Charisma.
 You can boost your Constitution or your Strength and you get one free boost.
 [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
 
-Your Speed is 20 feet per round and you start with 10 Health.
-    ''')
+Your Speed is 20 feet per round and you start with 10 Health.''')
     playerBoost1 = input("Would you like to boost your [C]onstitution or your [S]trength? : ")
     playerBoost2 = input("And you get to boost one more attribute: ")
     playerCharisma += -1    # Penalty = -1
@@ -106,8 +103,7 @@ As an elf, you take a penalty to Strength.
 You can boost your Dexterity or your Intelligence and you get one free boost.
 [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
 
-Your Speed is 30 feet per round and you start with 6 Health.
-    ''')
+Your Speed is 30 feet per round and you start with 6 Health.''')
     playerBoost1 = input("Would you like to boost your [D]exterity or your [I]ntelligence? : ")
     playerBoost2 = input("And you get to boost one more attribute: ")
     playerStrength += -1  # Penalty = -1
@@ -131,8 +127,7 @@ print('''
 Who were you before you took up the life or an adventurer?
     [D]eckhand          [S]cholar
     [F]armhand          [W]arrior
-    [G]ambler
-''')
+    [G]ambler''')
 playerBackground = input("Before this life, I was a: ")
 playerBoost2 = input("And you get to choose a free boost: ")
 if playerBackground == "D" or playerBoost2 == "D":
@@ -159,8 +154,7 @@ Were you trained as a:
     [F]ighter       [C]leric
     [W]izard        [R]ogue
 
-You also get four free boosts.
-''')
+You also get four free boosts.''')
 playerClass = input("Choose a class: ")
 playerBoost1 = input("Choose your first free boost: ")
 playerBoost2 = input("Choose your second free boost: ")
@@ -203,8 +197,9 @@ elif playerClass == "R":
 playerInititive = playerWisdom
 
 def displayCharacterSheet():
-
-    ''' Display the character sheet '''
+    '''
+    Display the character sheet
+    '''
 
     clear_screen()
     print(f'''
@@ -214,8 +209,7 @@ def displayCharacterSheet():
     Wisdom: {playerWisdom}   Intelligence: {playerIntelligence}   Charisma: {playerCharisma}
     
     Speed: {playerSpeed}    Health: {playerHealth}
-    -----
-    ''')
+    -----''')
 
 displayCharacterSheet()
 iAmReadyToBegin = input("Press Enter when you are ready to begin... > ")
@@ -235,36 +229,31 @@ while exploringTheDungeon is True:
 The cave entrance looms before you, a dark maw set into the rugged hillside. Vines and moss cling to the
 rocky edges, and a faint, cool breeze carries the scent of damp earth from within. The shadows inside seem
 to shift and beckon, hinting at the mysteries and dangers that lie ahead. You notice a pile of rags in one
-corner and the cave continues east into the darkness.
-        ''')
+corner and the cave continues east into the darkness.''')
 
         # Offer some options
         print('''
 You can [L]eave the dungeon, [S]earch the rags, [E]xamine the vines, or [G]o deeper into the caves.
-Type [C] to view your character sheet.
-        ''')
+Type [C] to view your character sheet.''')
         playerAction = input("What would you like to do? : ")
         if playerAction == "L":                                 # Run away!!!
             print('''
 The darkening cave light and the wafting stench from ahead paints a grim image of your future.
 With a load and stoic "NOPE" you turn and leave the cave.
 
-Perhaps you'll reconsider? 
-            ''')
+Perhaps you'll reconsider?''')
         elif playerAction == "S":                               # Search the rags
             print('''
 Searching the rags reveals some torches that can be used to light your way.
 You also find a vial of red liquid that seems to glow with an inner holiness.
-Drinking this will restore some health!
-            ''')
+Drinking this will restore some health!''')
             hasTorches = True
             hasPotion = True
 
         elif playerAction == "E":                               # Examine the room
             print('''
 Cutting back the vines reveals some runic writing painted on the wall along with images
-of a large, feathered beast with terrible claws.
-            ''')
+of a large, feathered beast with terrible claws.''')
         elif playerAction == "G":
             nowInRoom = 2
         elif playerAction == "C": displayCharacterSheet()       # Show the character sheet
@@ -277,16 +266,14 @@ of a large, feathered beast with terrible claws.
         if foe2IsVanquished is False:
             print('''
 Suddenly, you hear the scurrying of tiny feet and the glint of eyes reflecting in the darkness. Before you can react,
-a pack of giant rats emerges from the shadows, their teeth bared and eyes gleaming with hunger.
-            ''')
+a pack of giant rats emerges from the shadows, their teeth bared and eyes gleaming with hunger.''')
 
         # Offer some options
         print("You can: Use your [T]orch to attempt to ward off the rats", end = '')
         if foe2IsVanquished is False:
             print("or [A]ttack the rats.")
         print('''Go back to the [W]est, Travel [E]ast or [S]outh
-Type [C] to view your character sheet.
-        ''')
+Type [C] to view your character sheet.''')
         playerAction = input("What would you like to do? : ")
 
         if playerAction == "T":                                 # brandish your torch
@@ -348,12 +335,10 @@ Type [C] to view your character sheet.
         The air is filled with the sweet scent of blooming flowers, and a gentle stream trickles nearby.
         Light shines in through a hole in the cave roof. Amidst the lush greenery, a lone skeleton sits propped
         against a stone, its bony fingers tightly clutching an ancient coffer. The scene is eerily serene, yet the
-        presence of the skeleton hints at untold stories and hidden dangers.
-        ''')
+        presence of the skeleton hints at untold stories and hidden dangers.''')
         # Offer some options
         print('''You can s[M]ell the flowers, [D]rink from the stream, [E]xamine the skeleton.
-        Travel [W]est or [S]outh. [I]nspect the coffer or Type [C] to view your character sheet.
-        ''')
+        Travel [W]est or [S]outh. [I]nspect the coffer or Type [C] to view your character sheet.''')
         playerAction = input("What would you like to do? : ")
         if playerAction == "C": displayCharacterSheet()
         elif playerAction == "S":
@@ -370,8 +355,7 @@ Type [C] to view your character sheet.
             if diceRoll >= 8:
                 print(f'''You roll {diceRoll} perception.
                 Inspecting the skeleton, can tell that this once-adventurer fell to some beast, long forgotten.
-                Their body shows signs of quite a struggle that ultimately ended with some very sharp claws.
-                ''')
+                Their body shows signs of quite a struggle that ultimately ended with some very sharp claws.''')
             else:
                 print("This skeleton has been here for quite some time. I wonder what killed them?")
         elif playerAction == "I":
@@ -418,8 +402,7 @@ the chasm taking 4 damage''', end = '')
         print('''As you step into the final room of the dungeon, a foul stench assaults your senses. In the dim light,
     you spot a large, menacing creature lurking in the shadows. Its body is a grotesque fusion of a wolf and a chicken,
     with sharp claws, a beak, and glowing eyes that track your every move. The foulfur lets out a low growl, its
-    feathers bristling as it prepares to attack.
-        ''')
+    feathers bristling as it prepares to attack.''')
         isEngagedWithTheFoulfur = True
         while isEngagedWithTheFoulfur is True:              # Offer some options
             print('''You can [A]ttack the Foulfur, [R]un away, [S]peak with the creature, [D]rink the health potion,
