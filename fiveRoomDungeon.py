@@ -219,6 +219,7 @@ def displayCharacterSheet():
 
 displayCharacterSheet()
 iAmReadyToBegin = input("Press Enter when you are ready to begin... > ")
+clear_screen()
 
 # Let's begin our Story
 nowInRoom = 1
