@@ -381,15 +381,33 @@ financial success!""")
                     print(f"""You roll a {diceRoll}.
 Try as you might, you just can't wrest the coffer from the skeleton's grasp.""")
 
-    elif nowInRoom == 4:
-        pass
+    elif nowInRoom == 4:                                     # Move to Room 4
         # Describe the room
-        # Offer some options
-        # Show the character sheet
-        # Examine the Room
-        # Do some stuff
-    elif nowInRoom == 5:
-        pass
+        print(f"""
+    Carefully making your way into this next room, you find yourself standing on a precarious, slippery ledge.
+    Below, a vast chasm stretches out, its depths shrouded in darkness. The sound of distant water echoes up from
+    the abyss, and the ledge beneath your feet feels unstable, threatening to give way at any moment.
+        """)
+        diceRoll = random.randint(1,20)                     # Make a reflex save or slip over the edge
+        if hasTorches == False: diceRoll += -2
+        diceRoll = diceRoll + playerDexterity
+        if diceRoll >= 12:
+            print(f"""You roll a {diceRoll} and make a reflex save!
+Although quite perilous, you are sure-footed and make it across the chasm into the next room.
+            """)
+            nowInRoom = 5                                   # Succeed, move to Room 5
+        else:
+            print(f"""You roll a {diceRoll} and fail a reflex save.
+The precarious ledge is quite slippery and you lose your footing! You slide over the edge and down into
+the chasm taking 4 damage""", end = "")
+            nowInRoom = 2                                   # Fail, move back to room 2
+            playerHealth += -4                              # And take damage ;)
+            if playerHealth <= 0:
+                print("and here your adventure ends. Perhaps another, luckier soul will find your loot!")
+                exploringTheDungeon = False
+            else:
+                print(""". At the bottom, you brush yourself off and find a path back up.""")
+    elif nowInRoom == 5:                                    # On to the final room!  Woot!!!
         # Describe the room
         # Offer some options
         # Show the character sheet
