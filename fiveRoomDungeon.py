@@ -29,7 +29,12 @@ hasTorches = False
 hasPotion = False
 
 # Introduction to the Game
-print("You awaken in a strange land. So far away and yet so long ago...")
+print('''
+Traveling merchants often describe seeing caves in the cliffs south of town as they ride up from the village of
+Honeywood. The pass along the shore is the fastest route but those caves are the reason they want to reach the town
+gates before dark. The caves exude a dark, foreboding feeling that sends a shiver up one’s spine just thinking about
+the dangers that lurk there and one can’t help but notice a stench that makes their pack mules uneasy.
+''')
 playerName = input("Tell me, brave adventurer, by what name are you known in these lands? : ")
 
 # Character Creation
@@ -209,20 +214,16 @@ def displayCharacterSheet():
     -----
     ''')
 
-# Let's begin our Story
-print('''
-Traveling merchants often describe seeing caves in the cliffs south of town as they ride up from the village of
-Honeywood. The pass along the shore is the fastest route but those caves are the reason they want to reach the town
-gates before dark. The caves exude a dark, foreboding feeling that sends a shiver up one’s spine just thinking about
-the dangers that lurk there and one can’t help but notice a stench that makes their pack mules uneasy.
-''')
+displayCharacterSheet()
+iAmReadyToBegin = input("Press Enter when you are ready to begin... > ")
 
+# Let's begin our Story
 nowInRoom = 1
 foe2IsVanquished = False
 foe2Health = 6
 exploringTheDungeon = True
 while exploringTheDungeon is True:
-    if nowInRoom == 1:
+    if nowInRoom == 1:                                          # Enter Room 1
         # Describe the room
         print('''
 The cave entrance looms before you, a dark maw set into the rugged hillside. Vines and moss cling to the
@@ -283,7 +284,7 @@ Type [C] to view your character sheet.
         playerAction = input("What would you like to do? : ")
 
         if playerAction == "T":                                 # brandish your torch
-            diceRoll = random.randint(1, 20) + playerStrength  # Roll a d20 and add STR, DC = 15
+            diceRoll = random.randint(1, 20) + playerStrength   # Roll a d20 and add STR, DC = 15
             print("You brandish your torch, waving the flame in front of the rats to ward them off.")
             if diceRoll >= 12:
                 print("The rats are frightened by your intimidating presence, and of course the fire, and scurry away.")
@@ -381,35 +382,35 @@ financial success!""")
                     print(f"""You roll a {diceRoll}.
 Try as you might, you just can't wrest the coffer from the skeleton's grasp.""")
 
-    elif nowInRoom == 4:                                     # Move to Room 4
+    elif nowInRoom == 4:                                        # Move to Room 4
         # Describe the room
         print(f"""
     Carefully making your way into this next room, you find yourself standing on a precarious, slippery ledge.
     Below, a vast chasm stretches out, its depths shrouded in darkness. The sound of distant water echoes up from
     the abyss, and the ledge beneath your feet feels unstable, threatening to give way at any moment.
         """)
-        diceRoll = random.randint(1,20)                     # Make a reflex save or slip over the edge
+        diceRoll = random.randint(1,20)                         # Make a reflex save or slip over the edge
         if hasTorches == False: diceRoll += -2
         diceRoll = diceRoll + playerDexterity
         if diceRoll >= 12:
             print(f"""You roll a {diceRoll} and make a reflex save!
 Although quite perilous, you are sure-footed and make it across the chasm into the next room.
             """)
-            nowInRoom = 5                                   # Succeed, move to Room 5
+            nowInRoom = 5                                       # Succeed, move to Room 5
         else:
             print(f"""You roll a {diceRoll} and fail a reflex save.
 The precarious ledge is quite slippery and you lose your footing! You slide over the edge and down into
 the chasm taking 4 damage""", end = "")
-            nowInRoom = 2                                   # Fail, move back to room 2
-            playerHealth += -4                              # And take damage ;)
+            nowInRoom = 2                                       # Fail, move back to room 2
+            playerHealth += -4                                  # And take damage ;)
             if playerHealth <= 0:
                 print("and here your adventure ends. Perhaps another, luckier soul will find your loot!")
                 exploringTheDungeon = False
             else:
                 print(""". At the bottom, you brush yourself off and find a path back up.""")
-    elif nowInRoom == 5:                                    # On to the final room!  Woot!!!
+    elif nowInRoom == 5:                                        # On to the final room!  Woot!!!
         # Describe the room
-        print(f"""As you step into the final room of the dungeon, a foul stench assaults your senses. In the dim light,
+        print("""As you step into the final room of the dungeon, a foul stench assaults your senses. In the dim light,
     you spot a large, menacing creature lurking in the shadows. Its body is a grotesque fusion of a wolf and a chicken,
     with sharp claws, a beak, and glowing eyes that track your every move. The wolf-chicken lets out a low growl, its
     feathers bristling as it prepares to attack.
