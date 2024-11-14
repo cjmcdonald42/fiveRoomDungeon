@@ -409,6 +409,11 @@ the chasm taking 4 damage""", end = "")
                 print(""". At the bottom, you brush yourself off and find a path back up.""")
     elif nowInRoom == 5:                                    # On to the final room!  Woot!!!
         # Describe the room
+        print(f"""As you step into the final room of the dungeon, a foul stench assaults your senses. In the dim light,
+    you spot a large, menacing creature lurking in the shadows. Its body is a grotesque fusion of a wolf and a chicken,
+    with sharp claws, a beak, and glowing eyes that track your every move. The wolf-chicken lets out a low growl, its
+    feathers bristling as it prepares to attack.
+        """)
         # Offer some options
         # Show the character sheet
         # Examine the Room
