@@ -1,8 +1,8 @@
 '''
     package: fiveRoomDungeon.py
      author: Charles J McDonald «cmcdonald@woonsocketschools.com»
-       date: 11/13/2024
-    version: 0.1 indev
+       date: 11/14/2024
+    version: Alpha, ready to begin testing
 '''
 
 from random import random
