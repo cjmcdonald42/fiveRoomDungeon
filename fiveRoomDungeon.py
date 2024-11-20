@@ -37,10 +37,10 @@ the dangers that lurk there and one can’t help but notice a stench that makes 
 playerName = input("Tell me, brave adventurer, by what name are you known in these lands? : ")
 
 # Character Creation
-playerAncestry = input("Will you be a [H]uman, a [D]warf or an [E]lf? : ")
+playerAncestry = input("Will you be a [H]uman, a [D]warf or an [E]lf? : ").lower()
 
 # Create a human character
-if playerAncestry == "H":
+if playerAncestry == "h":
     print('''
 As a human, you get two free Boosts
 You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma''')
@@ -49,27 +49,27 @@ You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]i
     playerHealth = 8
     isChoosing = True
     while isChoosing is True:
-        playerBoost1 = input("Your first boost is to : ")
-        playerBoost2 = input("Your second boost is to : ")
+        playerBoost1 = input("Your first boost is to : ").lower()
+        playerBoost2 = input("Your second boost is to : ").lower()
         if playerBoost1 == playerBoost2:
             print("You can't boost the same ability twice")
         else:
-            if playerBoost1 == "S" or playerBoost2 == "S":
+            if playerBoost1 == "s" or playerBoost2 == "s":
                 playerStrength += 1
-            elif playerBoost1 == "D" or playerBoost2 == "D":
+            elif playerBoost1 == "d" or playerBoost2 == "d":
                 playerDexterity += 1
-            elif playerBoost1 == "C" or playerBoost2 == "C":
+            elif playerBoost1 == "c" or playerBoost2 == "c":
                 playerConstitution += 1
-            elif playerBoost1 == "I" or playerBoost2 == "I":
+            elif playerBoost1 == "i" or playerBoost2 == "i":
                 playerIntelligence += 1
-            elif playerBoost1 == "W" or playerBoost2 == "W":
+            elif playerBoost1 == "w" or playerBoost2 == "w":
                 playerWisdom += 1
-            elif playerBoost1 == "Ch" or playerBoost2 == "Ch":
+            elif playerBoost1 == "ch" or playerBoost2 == "ch":
                 playerCharisma += 1
             isChoosing = False
 
 # Create a dwarven character
-elif playerAncestry == "D":
+elif playerAncestry == "d":
     playerAncestryAdj = "Dwarven"
     print('''
 As a dwarf, you take a penalty to Charisma.
@@ -77,26 +77,26 @@ You can boost your Constitution or your Strength and you get one free boost.
 [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
 
 Your Speed is 20 feet per round and you start with 10 Health.''')
-    playerBoost1 = input("Would you like to boost your [C]onstitution or your [S]trength? : ")
-    playerBoost2 = input("And you get to boost one more attribute: ")
+    playerBoost1 = input("Would you like to boost your [C]onstitution or your [S]trength? : ").lower()
+    playerBoost2 = input("And you get to boost one more attribute: ").lower()
     playerCharisma += -1    # Penalty = -1
-    if playerBoost1 == "S" or playerBoost2 == "S":
+    if playerBoost1 == "s" or playerBoost2 == "s":
         playerStrength += 1
-    elif playerBoost2 == "D":
+    elif playerBoost2 == "d":
         playerDexterity += 1
-    elif playerBoost1 == "C" or playerBoost2 == "C":
+    elif playerBoost1 == "c" or playerBoost2 == "c":
         playerConstitution += 1
-    elif playerBoost2 == "I":
+    elif playerBoost2 == "i":
         playerIntelligence += 1
-    elif playerBoost2 == "W":
+    elif playerBoost2 == "w":
         playerWisdom += 1
-    elif playerBoost2 == "Ch":
+    elif playerBoost2 == "ch":
         playerCharisma += 1
     playerSpeed = 20
     playerHealth = 10
 
 # Create an elven character
-elif playerAncestry == "E":
+elif playerAncestry == "e":
     playerAncestryAdj = "Elven"
     print('''
 As an elf, you take a penalty to Strength.
@@ -104,20 +104,20 @@ You can boost your Dexterity or your Intelligence and you get one free boost.
 [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
 
 Your Speed is 30 feet per round and you start with 6 Health.''')
-    playerBoost1 = input("Would you like to boost your [D]exterity or your [I]ntelligence? : ")
-    playerBoost2 = input("And you get to boost one more attribute: ")
+    playerBoost1 = input("Would you like to boost your [D]exterity or your [I]ntelligence? : ").lower()
+    playerBoost2 = input("And you get to boost one more attribute: ").lower()
     playerStrength += -1  # Penalty = -1
-    if playerBoost2 == "S":
+    if playerBoost2 == "s":
         playerStrength += 1
-    elif playerBoost1 == "D" or playerBoost2 == "D":
+    elif playerBoost1 == "d" or playerBoost2 == "d":
         playerDexterity += 1
-    elif playerBoost2 == "C":
+    elif playerBoost2 == "c":
         playerConstitution += 1
-    elif playerBoost1 == "I" or playerBoost2 == "I":
+    elif playerBoost1 == "i" or playerBoost2 == "i":
         playerIntelligence += 1
-    elif playerBoost2 == "W":
+    elif playerBoost2 == "w":
         playerWisdom += 1
-    elif playerBoost2 == "Ch":
+    elif playerBoost2 == "ch":
         playerCharisma += 1
     playerSpeed = 20
     playerHealth = 10
@@ -128,23 +128,23 @@ Who were you before you took up the life or an adventurer?
     [D]eckhand          [S]cholar
     [F]armhand          [W]arrior
     [G]ambler''')
-playerBackground = input("Before this life, I was a: ")
-playerBoost2 = input("And you get to choose a free boost: ")
-if playerBackground == "D" or playerBoost2 == "D":
+playerBackground = input("Before this life, I was a: ").lower()
+playerBoost2 = input("And you get to choose a free boost: ").lower()
+if playerBackground == "d" or playerBoost2 == "d":
     playerDexterity += 1
-elif playerBackground == "F" or playerBoost2 == "C":
+elif playerBackground == "f" or playerBoost2 == "c":
     playerConstitution += 1
-elif playerBackground == "G":
+elif playerBackground == "g":
     playerCharisma += 1
-elif playerBackground == "S":
+elif playerBackground == "s":
     playerCharisma += 1
-elif playerBackground == "W" or playerBoost2 == "S":
+elif playerBackground == "w" or playerBoost2 == "s":
     playerStrength += 1
-elif playerBoost2 == "I":
+elif playerBoost2 == "i":
     playerIntelligence += 1
-elif playerBoost2 == "W":
+elif playerBoost2 == "w":
     playerWisdom += 1
-elif playerBoost2 == "Ch":
+elif playerBoost2 == "ch":
     playerCharisma += 1
 
 # Choose a class
@@ -155,40 +155,40 @@ Were you trained as a:
     [W]izard        [R]ogue
 
 You also get four free boosts.''')
-playerClass = input("Choose a class: ")
-playerBoost1 = input("Choose your first free boost: ")
-playerBoost2 = input("Choose your second free boost: ")
-playerBoost3 = input("Choose your third free boost: ")
-playerBoost4 = input("Choose your fourth free boost: ")
+playerClass = input("Choose a class: ").lower()
+playerBoost1 = input("Choose your first free boost: ").lower()
+playerBoost2 = input("Choose your second free boost: ").lower()
+playerBoost3 = input("Choose your third free boost: ").lower()
+playerBoost4 = input("Choose your fourth free boost: ").lower()
 
 # Four free ability boosts
-if playerBoost1 == "S" or playerBoost2 == "S" or playerBoost3 == "S" or playerBoost4 == "S":
+if playerBoost1 == "s" or playerBoost2 == "s" or playerBoost3 == "s" or playerBoost4 == "s":
     playerStrength += 1
-if playerBoost1 == "C" or playerBoost2 == "C" or playerBoost3 == "C" or playerBoost4 == "C":
+if playerBoost1 == "c" or playerBoost2 == "c" or playerBoost3 == "c" or playerBoost4 == "c":
     playerConstitution += 1
-if playerBoost1 == "D" or playerBoost2 == "D" or playerBoost3 == "D" or playerBoost4 == "D":
+if playerBoost1 == "d" or playerBoost2 == "d" or playerBoost3 == "d" or playerBoost4 == "d":
     playerDexterity += 1
-if playerBoost1 == "I" or playerBoost2 == "I" or playerBoost3 == "I" or playerBoost4 == "I":
+if playerBoost1 == "i" or playerBoost2 == "i" or playerBoost3 == "i" or playerBoost4 == "i":
     playerIntelligence += 1
-if playerBoost1 == "W" or playerBoost2 == "W" or playerBoost3 == "W" or playerBoost4 == "W":
+if playerBoost1 == "w" or playerBoost2 == "w" or playerBoost3 == "w" or playerBoost4 == "w":
     playerWisdom += 1
-if playerBoost1 == "Ch" or playerBoost2 == "Ch" or playerBoost3 == "Ch" or playerBoost4 == "Ch":
+if playerBoost1 == "ch" or playerBoost2 == "ch" or playerBoost3 == "ch" or playerBoost4 == "ch":
     playerCharisma += 1
 
 # Each class boosts a key ability score
-if playerClass == "F":
+if playerClass == "f":
     playerClassName = "Fighter"
     playerStrength += 1
     playerAttack = playerStrength
-elif playerClass == "W":
+elif playerClass == "w":
     playerClassName = "Wizard"
     playerIntelligence += 1
     playerAttack = playerIntelligence
-elif playerClass == "C":
+elif playerClass == "c":
     playerClassName = "Cleric"
     playerWisdom += 1
     playerAttack = playerWisdom
-elif playerClass == "R":
+elif playerClass == "r":
     playerClassName = "Rogue"
     playerDexterity += 1
     playerAttack = playerDexterity
@@ -235,14 +235,14 @@ corner and the cave continues east into the darkness.''')
         print('''
 You can [L]eave the dungeon, [S]earch the rags, [E]xamine the vines, or [G]o deeper into the caves.
 Type [C] to view your character sheet.''')
-        playerAction = input("What would you like to do? : ")
-        if playerAction == "L":                                 # Run away!!!
+        playerAction = input("What would you like to do? : ").lower()
+        if playerAction == "l":                                 # Run away!!!
             print('''
 The darkening cave light and the wafting stench from ahead paints a grim image of your future.
 With a load and stoic "NOPE" you turn and leave the cave.
 
 Perhaps you'll reconsider?''')
-        elif playerAction == "S":                               # Search the rags
+        elif playerAction == "s":                               # Search the rags
             print('''
 Searching the rags reveals some torches that can be used to light your way.
 You also find a vial of red liquid that seems to glow with an inner holiness.
@@ -250,13 +250,13 @@ Drinking this will restore some health!''')
             hasTorches = True
             hasPotion = True
 
-        elif playerAction == "E":                               # Examine the room
+        elif playerAction == "e":                               # Examine the room
             print('''
 Cutting back the vines reveals some runic writing painted on the wall along with images
 of a large, feathered beast with terrible claws.''')
-        elif playerAction == "G":
+        elif playerAction == "g":
             nowInRoom = 2
-        elif playerAction == "C": displayCharacterSheet()       # Show the character sheet
+        elif playerAction == "c": displayCharacterSheet()       # Show the character sheet
         else:
             print("That's not a valid option.")
 
@@ -274,9 +274,9 @@ a pack of giant rats emerges from the shadows, their teeth bared and eyes gleami
             print("or [A]ttack the rats.")
         print('''Go back to the [W]est, Travel [E]ast or [S]outh
 Type [C] to view your character sheet.''')
-        playerAction = input("What would you like to do? : ")
+        playerAction = input("What would you like to do? : ").lower()
 
-        if playerAction == "T":                                 # brandish your torch
+        if playerAction == "t":                                 # brandish your torch
             diceRoll = random.randint(1, 20) + playerStrength   # Roll a d20 and add STR, DC = 15
             print("You brandish your torch, waving the flame in front of the rats to ward them off.")
             if diceRoll >= 12:
@@ -284,19 +284,19 @@ Type [C] to view your character sheet.''')
                 foeIsVanquished = True
             else:
                 print("The rats remain unimpressed by your ineffectual display!")
-        elif playerAction == "A":                               # Attack the rats
+        elif playerAction == "a":                               # Attack the rats
             diceRoll = random.randint(1, 20) + playerAttack
             if diceRoll >= 12:
-                if playerClass == "F":
+                if playerClass == "f":
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You swing your sword and strike the rats, doing {playerDamage}.")
-                elif playerClass == "W":
+                elif playerClass == "w":
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You cast a magic spell and strike the rats, doing {playerDamage}.")
-                elif playerClass == "R":
+                elif playerClass == "r":
                     playerDamage = random.randint(1, 4) + random.randint(1, 4)+ 2
                     print(f"You sneak up on the rats and strike, doing {playerDamage}.")
-                elif playerClass == "C":
+                elif playerClass == "c":
                     playerDamage = random.randint(1, 8) + 2
                     print(f"You call upon your divine will to strike the rats, doing {playerDamage}.")
                 foe2Health -= playerDamage
@@ -309,23 +309,23 @@ Type [C] to view your character sheet.''')
                         print("The rats swarm you and do 2 points of damage. You fall down and the world goes dark.")
                     else:
                         print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
-        elif playerAction == "W":                               # describe moving to Room 1
+        elif playerAction == "w":                               # describe moving to Room 1
             if foe2IsVanquished is False:
                 print("You cannot retreat while in combat with the rats.")
             else:
                 nowInRoom = 1
                 print("You return from whence you cam heading out of the dungeon")
-        elif playerAction == "E":                               # describe moving to Room 3
+        elif playerAction == "e":                               # describe moving to Room 3
             if foe2IsVanquished is False:
                 print("You cannot retreat while in combat with the rats.")
             else:
                 nowInRoom = 3
-        elif playerAction == "S":                               # describe moving to Room 4
+        elif playerAction == "s":                               # describe moving to Room 4
             if foe2IsVanquished is False:
                 print("You cannot retreat while in combat with the rats.")
             else:
                 nowInRoom = 4
-        elif playerAction == "C": displayCharacterSheet()
+        elif playerAction == "c": displayCharacterSheet()
         else:
             print("That's not a valid option.")
 
@@ -339,18 +339,16 @@ Type [C] to view your character sheet.''')
         # Offer some options
         print('''You can s[M]ell the flowers, [D]rink from the stream, [E]xamine the skeleton.
         Travel [W]est or [S]outh. [I]nspect the coffer or Type [C] to view your character sheet.''')
-        playerAction = input("What would you like to do? : ")
-        if playerAction == "C": displayCharacterSheet()
-        elif playerAction == "S":
-            nowInRoom = 5
-        elif playerAction == "W":
-            nowInRoom = 2
-        elif playerAction == "M":
+        playerAction = input("What would you like to do? : ").lower()
+        if playerAction == "c": displayCharacterSheet()
+        elif playerAction == "s": nowInRoom = 5
+        elif playerAction == "w": nowInRoom = 2
+        elif playerAction == "m":
             print("You plant your nose in the flowers and take in a deep breath. Ahhhhh, you exclaim.")
-        elif playerAction == "D":
+        elif playerAction == "d":
             print('''You bend down and lap some fresh water from the babbling stream.
             Absolutely nothing untoward happens... that you know of...''')
-        elif playerAction == "E":
+        elif playerAction == "e":
             diceRoll = random.randint(1, 20) + playerWisdom
             if diceRoll >= 8:
                 print(f'''You roll {diceRoll} perception.
@@ -360,8 +358,8 @@ Type [C] to view your character sheet.''')
                 print("This skeleton has been here for quite some time. I wonder what killed them?")
         elif playerAction == "I":
             print("The coffer is held tightly in the skeleton's grasp... perhaps you could pry it loose?")
-            playerAction = input("Sure, let's try to pry it [L]oose: ")
-            if playerAction == "L":
+            playerAction = input("Sure, let's try to pry it [L]oose: ").lower()
+            if playerAction == "l":
                 diceRoll = random.randint(1, 20) + playerStrength
                 if diceRoll >= 12:
                     print(f'''You roll a {diceRoll}!
@@ -381,7 +379,7 @@ Try as you might, you just can't wrest the coffer from the skeleton's grasp.''')
 
         diceRoll = random.randint(1,20)                     # Make a reflex save or slip over the edge
         if hasTorches is False: diceRoll += -2              # Penalty for no torches
-        diceRoll = diceRoll + playerDexterity               # Add DEX to the roll
+        diceRoll += playerDexterity                         # Add DEX to the roll
         if diceRoll >= 12:
             print(f'''You roll a {diceRoll} and make a reflex save!
 Although quite perilous, you are sure-footed and make it across the chasm into the next room.''')
@@ -407,29 +405,29 @@ the chasm taking 4 damage''', end = '')
         while isEngagedWithTheFoulfur is True:              # Offer some options
             print('''You can [A]ttack the Foulfur, [R]un away, [S]peak with the creature, [D]rink the health potion,
                 [U]se your torch to intimidate the FoulFur, or [C] to view your character sheet.''')
-            playerAction = input("What would you like to do? : ")
-            if playerAction == "C":                         # Show the character sheet
+            playerAction = input("What would you like to do? : ").lower()
+            if playerAction == "c":                         # Show the character sheet
                 displayCharacterSheet()
-            elif playerAction == "D":                       # Drink the health potion
+            elif playerAction == "d":                       # Drink the health potion
                 if hasPotion is True:
                     playerHealth += 8
                     print(f"You drink the potion and feel invigorated. You now have {playerHealth} health.")
                     hasPotion = False
                 else:
                     print("You don't have a potion to drink.")
-            elif playerAction == "A":                       # Attack
+            elif playerAction == "a":                       # Attack
                 diceRoll = random.randint(1, 20) + playerAttack
                 if diceRoll >= 12:
-                    if playerClass == "F":
+                    if playerClass == "f":
                         playerDamage = random.randint(1, 8) + 2
                         print(f"You swing your sword and strike the Foulfur, doing {playerDamage}.")
-                    elif playerClass == "W":
+                    elif playerClass == "w":
                         playerDamage = random.randint(1, 8) + 2
                         print(f"You cast a magic spell and strike the Foulfur, doing {playerDamage}.")
-                    elif playerClass == "R":
+                    elif playerClass == "r":
                         playerDamage = random.randint(1, 4) + random.randint(1, 4)+ 2
                         print(f"You sneak up on the Foulfur and strike, doing {playerDamage}.")
-                    elif playerClass == "C":
+                    elif playerClass == "c":
                         playerDamage = random.randint(1, 8) + 2
                         print(f"You call upon your divine will to strike the Foulfur, doing {playerDamage}.")
                     foe5Health -= playerDamage
@@ -445,7 +443,7 @@ the chasm taking 4 damage''', end = '')
                             print("The Foulfur strikes you and does 4 points of damage. You fall down and the world goes dark.")
                         else:
                             print(f"The Foulfur strikes you and does 4 points of damage. You have {playerHealth} left.")
-            elif playerAction == "R":                       # Run away
+            elif playerAction == "r":                       # Run away
                 if foe5Health >= 6:
                     playerHealth += -1
                     print("The Foulfur is too quick and catches you before you can escape.")
@@ -454,7 +452,7 @@ the chasm taking 4 damage''', end = '')
                     print("You manage to escape the Foulfur by running to the North.")
                     isEngagedWithTheFoulfur = False
                     nowInRoom = 3
-            elif playerAction == "S":                       # Speak with the creature
+            elif playerAction == "s":                       # Speak with the creature
                 diceRoll = random.randint(1, 20) + playerIntelligence
                 if diceRoll >= 16:
                     print('''You mimic the Foulfur's gutteral barks and feather motions attempting to speak with her.
@@ -467,7 +465,7 @@ the chasm taking 4 damage''', end = '')
                     playerHealth += -1
                     print(f'''You merely anger the Foulfur who takes a swipe at you with her powerful tail
                         doing 1 point of damage. You have {playerHealth} left.''')
-            elif playerAction == "U":                       # Use the torch
+            elif playerAction == "u":                       # Use the torch
                 diceRoll = random.randint(1, 20) + playerCharisma
                 if diceRoll >= 14:
                     print(f'''You roll a {diceRoll} and brandish your torch at the Foulfur.
