@@ -38,13 +38,14 @@ the dangers that lurk there and one can’t help but notice a stench that makes 
 playerName = input("Tell me, brave adventurer, by what name are'st thou known in these lands? : ")
 
 # Character Creation
-playerAncestry = input("Be ye [H]uman, a [D]warf or an [E]lf? : ")
+playerAncestry = input("Be ye [H]uman, a [D]warf or an [E]lf? : ").lower()
 
 # Create a human character
 if playerAncestry == "h":
     print('''
 As a human, ye get two free Boosts
-You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma''')
+You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
+    ''')
     playerAncestryAdj = "Human"
     playerSpeed = 25
     playerHealth = 8
