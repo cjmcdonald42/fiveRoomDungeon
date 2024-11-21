@@ -11,7 +11,7 @@ Honeywood. The pass along the shore is the fastest route but those caves are the
 gates before dark. The caves exude a dark, foreboding feeling that sends a shiver up one’s spine just thinking about
 the dangers that lurk there and one can’t help but notice a stench that makes their pack mules uneasy.
 
-![Foulfur](/assets/Foulfur.jpg)
+![Foulfur](/assets/owlbearStuffed.jpg)
 
 The FoulFest Caves is a text-based, RPG experience for one player written in Python. This project is done as a capstone
 coding and game design experience for my PTech Students. The game is based on Johann Four's Five-Room-Dungeon design
