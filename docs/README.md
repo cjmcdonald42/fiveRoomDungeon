@@ -1,7 +1,7 @@
      package:   fiveRoomDungeon.py
       author:   Charles J McDonald «cmcdonald@woonsocketschools.com»
-        date:   2024.11.20
-    maturity:   Alpha, ready to begin testing
+        date:   2024.11.21
+    maturity:   Beta, ready to begin public testing
 
 # fiveRoomDungeon
 
