@@ -40,9 +40,9 @@ def displayCharacterSheet():
     Level 1 {playerAncestryAdj} {playerClassName}
     Background: {playerBackgroundName}
     Strength: {playerStrength}   Constitution: {playerConstitution}   Dexterity: {playerDexterity}
-    Wisdom: {playerWisdom}   Intelligence: {playerIntelligence}   Charisma: {playerCharisma}
+    Wisdom: {playerWisdom}     Intelligence: {playerIntelligence}   Charisma: {playerCharisma}
 
-    Speed: {playerSpeed}    Health: {playerHealth}
+    Initiative: {playerInititive}   Speed: {playerSpeed}    Health: {playerHealth}
     -----''')
 
 # Introduction to the Game
@@ -123,10 +123,6 @@ Your Speed is 30 feet per round and you start with 6 Health.''')
     playerSpeed = 20
     playerHealth = 10
 
-displayCharacterSheet()
-iAmReadyToBegin = input("Press Enter when you are ready to begin... > ")
-
-
 # Choose a Background
 print('''
 Who were ye before ye took up the life or an adventurer?
@@ -134,11 +130,11 @@ Who were ye before ye took up the life or an adventurer?
     [F]armhand          [W]arrior
     [G]ambler''')
 playerBackground = input("Before this life, I was a: ").lower()
-if playerBackground == "D": playerBackgroundName = "Deckhand"       # Full name of background for character sheet
-elif playerBackground == "F": playerBackgroundName = "Farmhand"
-elif playerBackground == "G": playerBackgroundName = "Gambler"
-elif playerBackground == "S": playerBackgroundName = "Scholar"
-elif playerBackground == "W": playerBackgroundName = "Warrior"
+if playerBackground == "d": playerBackgroundName = "Deckhand"       # Full name of background for character sheet
+elif playerBackground == "f": playerBackgroundName = "Farmhand"
+elif playerBackground == "g": playerBackgroundName = "Gambler"
+elif playerBackground == "s": playerBackgroundName = "Scholar"
+elif playerBackground == "w": playerBackgroundName = "Warrior"
 
 playerBoost2 = input("And you get to choose a free boost: ").lower()
 if playerBackground == "d" or playerBoost2 == "d": playerDexterity += 1
