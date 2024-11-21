@@ -37,7 +37,7 @@ the dangers that lurk there and one can’t help but notice a stench that makes 
 playerName = input("Tell me, brave adventurer, by what name are you known in these lands? : ")
 
 # Character Creation
-playerAncestry = input("Will you be a [H]uman, a [D]warf or an [E]lf? : ").lower()
+playerAncestry = input("Be ye [H]uman, a [D]warf or an [E]lf? : ")
 
 # Create a human character
 if playerAncestry == "h":
@@ -124,7 +124,7 @@ Your Speed is 30 feet per round and you start with 6 Health.''')
 
 # Choose a Background
 print('''
-Who were you before you took up the life or an adventurer?
+Who were ye before ye took up the life or an adventurer?
     [D]eckhand          [S]cholar
     [F]armhand          [W]arrior
     [G]ambler''')
@@ -150,7 +150,7 @@ elif playerBoost2 == "ch":
 # Choose a class
 print('''
 Your class describes your training and the skills you use to solve problems.
-Were you trained as a:
+Were ye trained as a:
     [F]ighter       [C]leric
     [W]izard        [R]ogue
 
@@ -269,7 +269,7 @@ Suddenly, you hear the scurrying of tiny feet and the glint of eyes reflecting i
 a pack of giant rats emerges from the shadows, their teeth bared and eyes gleaming with hunger.''')
 
         # Offer some options
-        print("You can: Use your [T]orch to attempt to ward off the rats", end = '')
+        print("You can: Use your [T]orch to attempt to ward off the rats ", end = '')
         if foe2IsVanquished is False:
             print("or [A]ttack the rats.")
         print('''Go back to the [W]est, Travel [E]ast or [S]outh
