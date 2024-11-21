@@ -1,7 +1,7 @@
 '''
     package: fiveRoomDungeon.py
      author: Charles J McDonald «cmcdonald@woonsocketschools.com»
-       date: 11/14/2024
+       date: 11/20/2024
     version: Alpha, ready to begin testing
 '''
 
@@ -9,12 +9,12 @@ from random import random
 from colorama.ansi import clear_screen
 
 # Player character sheet
-playerName = ""
-playerAncestry = ""
-playerAncestryAdj = ""
-playerBackground = ""
-playerClass = ""
-playerClassName = ""
+playerName = ''
+playerAncestry = ''
+playerAncestryAdj = ''
+playerBackground = ''
+playerClass = ''
+playerClassName = ''
 playerStrength = 0
 playerDexterity = 0
 playerConstitution = 0
@@ -34,7 +34,7 @@ Traveling merchants often describe seeing caves in the cliffs south of town as t
 Honeywood. The pass along the shore is the fastest route but those caves are the reason they want to reach the town
 gates before dark. The caves exude a dark, foreboding feeling that sends a shiver up one’s spine just thinking about
 the dangers that lurk there and one can’t help but notice a stench that makes their pack mules uneasy.''')
-playerName = input("Tell me, brave adventurer, by what name are you known in these lands? : ")
+playerName = input("Tell me, brave adventurer, by what name are'st thou known in these lands? : ")
 
 # Character Creation
 playerAncestry = input("Be ye [H]uman, a [D]warf or an [E]lf? : ")
@@ -42,7 +42,7 @@ playerAncestry = input("Be ye [H]uman, a [D]warf or an [E]lf? : ")
 # Create a human character
 if playerAncestry == "h":
     print('''
-As a human, you get two free Boosts
+As a human, ye get two free Boosts
 You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma''')
     playerAncestryAdj = "Human"
     playerSpeed = 25
@@ -78,7 +78,7 @@ You can boost your Constitution or your Strength and you get one free boost.
 
 Your Speed is 20 feet per round and you start with 10 Health.''')
     playerBoost1 = input("Would you like to boost your [C]onstitution or your [S]trength? : ").lower()
-    playerBoost2 = input("And you get to boost one more attribute: ").lower()
+    playerBoost2 = input("And ye get to boost one more attributes: ").lower()
     playerCharisma += -1    # Penalty = -1
     if playerBoost1 == "s" or playerBoost2 == "s":
         playerStrength += 1
