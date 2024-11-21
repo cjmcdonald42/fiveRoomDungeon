@@ -13,6 +13,7 @@ playerName = ''
 playerAncestry = ''
 playerAncestryAdj = ''
 playerBackground = ''
+playerBackgroundName = ''
 playerClass = ''
 playerClassName = ''
 playerStrength = 0
@@ -113,6 +114,12 @@ Who were ye before ye took up the life or an adventurer?
     [F]armhand          [W]arrior
     [G]ambler''')
 playerBackground = input("Before this life, I was a: ").lower()
+if playerBackground == "D": playerBackgroundName = "Deckhand"       # Full name of background for character sheet
+elif playerBackground == "F": playerBackgroundName = "Farmhand"
+elif playerBackground == "G": playerBackgroundName = "Gambler"
+elif playerBackground == "S": playerBackgroundName = "Scholar"
+elif playerBackground == "W": playerBackgroundName = "Warrior"
+
 playerBoost2 = input("And you get to choose a free boost: ").lower()
 if playerBackground == "d" or playerBoost2 == "d": playerDexterity += 1
 elif playerBackground == "f" or playerBoost2 == "c": playerConstitution += 1
@@ -175,6 +182,7 @@ def displayCharacterSheet():
     print(f'''
 == Character Sheet for {playerName} ==
     Level 1 {playerAncestryAdj} {playerClassName}
+    Background: {playerBackgroundName}
     Strength: {playerStrength}   Constitution: {playerConstitution}   Dexterity: {playerDexterity}
     Wisdom: {playerWisdom}   Intelligence: {playerIntelligence}   Charisma: {playerCharisma}
     
