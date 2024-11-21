@@ -33,7 +33,8 @@ print('''
 Traveling merchants often describe seeing caves in the cliffs south of town as they ride up from the village of
 Honeywood. The pass along the shore is the fastest route but those caves are the reason they want to reach the town
 gates before dark. The caves exude a dark, foreboding feeling that sends a shiver up one’s spine just thinking about
-the dangers that lurk there and one can’t help but notice a stench that makes their pack mules uneasy.''')
+the dangers that lurk there and one can’t help but notice a stench that makes their pack mules uneasy.
+''')
 playerName = input("Tell me, brave adventurer, by what name are'st thou known in these lands? : ")
 
 # Character Creation
@@ -54,18 +55,12 @@ You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]i
         if playerBoost1 == playerBoost2:
             print("You can't boost the same ability twice")
         else:
-            if playerBoost1 == "s" or playerBoost2 == "s":
-                playerStrength += 1
-            elif playerBoost1 == "d" or playerBoost2 == "d":
-                playerDexterity += 1
-            elif playerBoost1 == "c" or playerBoost2 == "c":
-                playerConstitution += 1
-            elif playerBoost1 == "i" or playerBoost2 == "i":
-                playerIntelligence += 1
-            elif playerBoost1 == "w" or playerBoost2 == "w":
-                playerWisdom += 1
-            elif playerBoost1 == "ch" or playerBoost2 == "ch":
-                playerCharisma += 1
+            if playerBoost1 == "s" or playerBoost2 == "s": playerStrength += 1
+            elif playerBoost1 == "d" or playerBoost2 == "d": playerDexterity += 1
+            elif playerBoost1 == "c" or playerBoost2 == "c": playerConstitution += 1
+            elif playerBoost1 == "i" or playerBoost2 == "i": playerIntelligence += 1
+            elif playerBoost1 == "w" or playerBoost2 == "w": playerWisdom += 1
+            elif playerBoost1 == "ch" or playerBoost2 == "ch": playerCharisma += 1
             isChoosing = False
 
 # Create a dwarven character
@@ -80,18 +75,12 @@ Your Speed is 20 feet per round and you start with 10 Health.''')
     playerBoost1 = input("Would you like to boost your [C]onstitution or your [S]trength? : ").lower()
     playerBoost2 = input("And ye get to boost one more attributes: ").lower()
     playerCharisma += -1    # Penalty = -1
-    if playerBoost1 == "s" or playerBoost2 == "s":
-        playerStrength += 1
-    elif playerBoost2 == "d":
-        playerDexterity += 1
-    elif playerBoost1 == "c" or playerBoost2 == "c":
-        playerConstitution += 1
-    elif playerBoost2 == "i":
-        playerIntelligence += 1
-    elif playerBoost2 == "w":
-        playerWisdom += 1
-    elif playerBoost2 == "ch":
-        playerCharisma += 1
+    if playerBoost1 == "s" or playerBoost2 == "s": playerStrength += 1
+    elif playerBoost2 == "d": playerDexterity += 1
+    elif playerBoost1 == "c" or playerBoost2 == "c": playerConstitution += 1
+    elif playerBoost2 == "i": playerIntelligence += 1
+    elif playerBoost2 == "w": playerWisdom += 1
+    elif playerBoost2 == "ch": playerCharisma += 1
     playerSpeed = 20
     playerHealth = 10
 
@@ -107,18 +96,12 @@ Your Speed is 30 feet per round and you start with 6 Health.''')
     playerBoost1 = input("Would you like to boost your [D]exterity or your [I]ntelligence? : ").lower()
     playerBoost2 = input("And you get to boost one more attribute: ").lower()
     playerStrength += -1  # Penalty = -1
-    if playerBoost2 == "s":
-        playerStrength += 1
-    elif playerBoost1 == "d" or playerBoost2 == "d":
-        playerDexterity += 1
-    elif playerBoost2 == "c":
-        playerConstitution += 1
-    elif playerBoost1 == "i" or playerBoost2 == "i":
-        playerIntelligence += 1
-    elif playerBoost2 == "w":
-        playerWisdom += 1
-    elif playerBoost2 == "ch":
-        playerCharisma += 1
+    if playerBoost2 == "s": playerStrength += 1
+    elif playerBoost1 == "d" or playerBoost2 == "d": playerDexterity += 1
+    elif playerBoost2 == "c": playerConstitution += 1
+    elif playerBoost1 == "i" or playerBoost2 == "i": playerIntelligence += 1
+    elif playerBoost2 == "w": playerWisdom += 1
+    elif playerBoost2 == "ch": playerCharisma += 1
     playerSpeed = 20
     playerHealth = 10
 
@@ -130,22 +113,14 @@ Who were ye before ye took up the life or an adventurer?
     [G]ambler''')
 playerBackground = input("Before this life, I was a: ").lower()
 playerBoost2 = input("And you get to choose a free boost: ").lower()
-if playerBackground == "d" or playerBoost2 == "d":
-    playerDexterity += 1
-elif playerBackground == "f" or playerBoost2 == "c":
-    playerConstitution += 1
-elif playerBackground == "g":
-    playerCharisma += 1
-elif playerBackground == "s":
-    playerCharisma += 1
-elif playerBackground == "w" or playerBoost2 == "s":
-    playerStrength += 1
-elif playerBoost2 == "i":
-    playerIntelligence += 1
-elif playerBoost2 == "w":
-    playerWisdom += 1
-elif playerBoost2 == "ch":
-    playerCharisma += 1
+if playerBackground == "d" or playerBoost2 == "d": playerDexterity += 1
+elif playerBackground == "f" or playerBoost2 == "c": playerConstitution += 1
+elif playerBackground == "g": playerCharisma += 1
+elif playerBackground == "s": playerCharisma += 1
+elif playerBackground == "w" or playerBoost2 == "s": playerStrength += 1
+elif playerBoost2 == "i": playerIntelligence += 1
+elif playerBoost2 == "w": playerWisdom += 1
+elif playerBoost2 == "ch": playerCharisma += 1
 
 # Choose a class
 print('''
@@ -162,18 +137,12 @@ playerBoost3 = input("Choose your third free boost: ").lower()
 playerBoost4 = input("Choose your fourth free boost: ").lower()
 
 # Four free ability boosts
-if playerBoost1 == "s" or playerBoost2 == "s" or playerBoost3 == "s" or playerBoost4 == "s":
-    playerStrength += 1
-if playerBoost1 == "c" or playerBoost2 == "c" or playerBoost3 == "c" or playerBoost4 == "c":
-    playerConstitution += 1
-if playerBoost1 == "d" or playerBoost2 == "d" or playerBoost3 == "d" or playerBoost4 == "d":
-    playerDexterity += 1
-if playerBoost1 == "i" or playerBoost2 == "i" or playerBoost3 == "i" or playerBoost4 == "i":
-    playerIntelligence += 1
-if playerBoost1 == "w" or playerBoost2 == "w" or playerBoost3 == "w" or playerBoost4 == "w":
-    playerWisdom += 1
-if playerBoost1 == "ch" or playerBoost2 == "ch" or playerBoost3 == "ch" or playerBoost4 == "ch":
-    playerCharisma += 1
+if playerBoost1 == "s" or playerBoost2 == "s" or playerBoost3 == "s" or playerBoost4 == "s": playerStrength += 1
+if playerBoost1 == "c" or playerBoost2 == "c" or playerBoost3 == "c" or playerBoost4 == "c": playerConstitution += 1
+if playerBoost1 == "d" or playerBoost2 == "d" or playerBoost3 == "d" or playerBoost4 == "d": playerDexterity += 1
+if playerBoost1 == "i" or playerBoost2 == "i" or playerBoost3 == "i" or playerBoost4 == "i": playerIntelligence += 1
+if playerBoost1 == "w" or playerBoost2 == "w" or playerBoost3 == "w" or playerBoost4 == "w": playerWisdom += 1
+if playerBoost1 == "ch" or playerBoost2 == "ch" or playerBoost3 == "ch" or playerBoost4 == "ch": playerCharisma += 1
 
 # Each class boosts a key ability score
 if playerClass == "f":
@@ -254,11 +223,9 @@ Drinking this will restore some health!''')
             print('''
 Cutting back the vines reveals some runic writing painted on the wall along with images
 of a large, feathered beast with terrible claws.''')
-        elif playerAction == "g":
-            nowInRoom = 2
+        elif playerAction == "g": nowInRoom = 2
         elif playerAction == "c": displayCharacterSheet()       # Show the character sheet
-        else:
-            print("That's not a valid option.")
+        else: print("That's not a valid option.")
 
     elif nowInRoom == 2:                                        # Moving into room 2
         # Describe the room
