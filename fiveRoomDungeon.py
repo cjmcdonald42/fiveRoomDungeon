@@ -29,6 +29,22 @@ playerAttack = 0
 hasTorches = False
 hasPotion = False
 
+def displayCharacterSheet():
+    '''
+    Display the character sheet
+    '''
+
+    clear_screen()
+    print(f'''
+== Character Sheet for {playerName} ==
+    Level 1 {playerAncestryAdj} {playerClassName}
+    Background: {playerBackgroundName}
+    Strength: {playerStrength}   Constitution: {playerConstitution}   Dexterity: {playerDexterity}
+    Wisdom: {playerWisdom}   Intelligence: {playerIntelligence}   Charisma: {playerCharisma}
+
+    Speed: {playerSpeed}    Health: {playerHealth}
+    -----''')
+
 # Introduction to the Game
 print('''
 Traveling merchants often describe seeing caves in the cliffs south of town as they ride up from the village of
@@ -58,11 +74,11 @@ You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]i
             print("You can't boost the same ability twice")
         else:
             if playerBoost1 == "s" or playerBoost2 == "s": playerStrength += 1
-            elif playerBoost1 == "d" or playerBoost2 == "d": playerDexterity += 1
-            elif playerBoost1 == "c" or playerBoost2 == "c": playerConstitution += 1
-            elif playerBoost1 == "i" or playerBoost2 == "i": playerIntelligence += 1
-            elif playerBoost1 == "w" or playerBoost2 == "w": playerWisdom += 1
-            elif playerBoost1 == "ch" or playerBoost2 == "ch": playerCharisma += 1
+            if playerBoost1 == "d" or playerBoost2 == "d": playerDexterity += 1
+            if playerBoost1 == "c" or playerBoost2 == "c": playerConstitution += 1
+            if playerBoost1 == "i" or playerBoost2 == "i": playerIntelligence += 1
+            if playerBoost1 == "w" or playerBoost2 == "w": playerWisdom += 1
+            if playerBoost1 == "ch" or playerBoost2 == "ch": playerCharisma += 1
             isChoosing = False
 
 # Create a dwarven character
@@ -78,11 +94,11 @@ Your Speed is 20 feet per round and you start with 10 Health.''')
     playerBoost2 = input("And ye get to boost one more attributes: ").lower()
     playerCharisma += -1    # Penalty = -1
     if playerBoost1 == "s" or playerBoost2 == "s": playerStrength += 1
-    elif playerBoost2 == "d": playerDexterity += 1
-    elif playerBoost1 == "c" or playerBoost2 == "c": playerConstitution += 1
-    elif playerBoost2 == "i": playerIntelligence += 1
-    elif playerBoost2 == "w": playerWisdom += 1
-    elif playerBoost2 == "ch": playerCharisma += 1
+    if playerBoost2 == "d": playerDexterity += 1
+    if playerBoost1 == "c" or playerBoost2 == "c": playerConstitution += 1
+    if playerBoost2 == "i": playerIntelligence += 1
+    if playerBoost2 == "w": playerWisdom += 1
+    if playerBoost2 == "ch": playerCharisma += 1
     playerSpeed = 20
     playerHealth = 10
 
@@ -99,13 +115,17 @@ Your Speed is 30 feet per round and you start with 6 Health.''')
     playerBoost2 = input("And you get to boost one more attribute: ").lower()
     playerStrength += -1  # Penalty = -1
     if playerBoost2 == "s": playerStrength += 1
-    elif playerBoost1 == "d" or playerBoost2 == "d": playerDexterity += 1
-    elif playerBoost2 == "c": playerConstitution += 1
-    elif playerBoost1 == "i" or playerBoost2 == "i": playerIntelligence += 1
-    elif playerBoost2 == "w": playerWisdom += 1
-    elif playerBoost2 == "ch": playerCharisma += 1
+    if playerBoost1 == "d" or playerBoost2 == "d": playerDexterity += 1
+    if playerBoost2 == "c": playerConstitution += 1
+    if playerBoost1 == "i" or playerBoost2 == "i": playerIntelligence += 1
+    if playerBoost2 == "w": playerWisdom += 1
+    if playerBoost2 == "ch": playerCharisma += 1
     playerSpeed = 20
     playerHealth = 10
+
+displayCharacterSheet()
+iAmReadyToBegin = input("Press Enter when you are ready to begin... > ")
+
 
 # Choose a Background
 print('''
@@ -122,13 +142,13 @@ elif playerBackground == "W": playerBackgroundName = "Warrior"
 
 playerBoost2 = input("And you get to choose a free boost: ").lower()
 if playerBackground == "d" or playerBoost2 == "d": playerDexterity += 1
-elif playerBackground == "f" or playerBoost2 == "c": playerConstitution += 1
-elif playerBackground == "g": playerCharisma += 1
-elif playerBackground == "s": playerCharisma += 1
-elif playerBackground == "w" or playerBoost2 == "s": playerStrength += 1
-elif playerBoost2 == "i": playerIntelligence += 1
-elif playerBoost2 == "w": playerWisdom += 1
-elif playerBoost2 == "ch": playerCharisma += 1
+if playerBackground == "f" or playerBoost2 == "c": playerConstitution += 1
+if playerBackground == "g": playerCharisma += 1
+if playerBackground == "s": playerCharisma += 1
+if playerBackground == "w" or playerBoost2 == "s": playerStrength += 1
+if playerBoost2 == "i": playerIntelligence += 1
+if playerBoost2 == "w": playerWisdom += 1
+if playerBoost2 == "ch": playerCharisma += 1
 
 # Choose a class
 print('''
@@ -172,22 +192,6 @@ elif playerClass == "r":
 
 # Your initiative is your Wisdom bonus
 playerInititive = playerWisdom
-
-def displayCharacterSheet():
-    '''
-    Display the character sheet
-    '''
-
-    clear_screen()
-    print(f'''
-== Character Sheet for {playerName} ==
-    Level 1 {playerAncestryAdj} {playerClassName}
-    Background: {playerBackgroundName}
-    Strength: {playerStrength}   Constitution: {playerConstitution}   Dexterity: {playerDexterity}
-    Wisdom: {playerWisdom}   Intelligence: {playerIntelligence}   Charisma: {playerCharisma}
-    
-    Speed: {playerSpeed}    Health: {playerHealth}
-    -----''')
 
 displayCharacterSheet()
 iAmReadyToBegin = input("Press Enter when you are ready to begin... > ")
