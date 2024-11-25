@@ -7,7 +7,7 @@
 '''
 
 import random
-from colorama.ansi import clear_screen
+from colorama.ansi import clear_screen, Fore, Back, Style
 
 # Player character sheet
 playerName = ''
@@ -37,17 +37,17 @@ def displayCharacterSheet():
 
     clear_screen()
     print(f'''
-== Character Sheet for {playerName} ==
+{Fore.GREEN} == {Style.RESET_ALL}Character Sheet for {playerName} {Fore.GREEN} == {Style.RESET_ALL}
     Level 1 {playerAncestryAdj} {playerClassName}
-    Background: {playerBackgroundName}
-    Strength: {playerStrength}   Constitution: {playerConstitution}   Dexterity: {playerDexterity}
-    Wisdom: {playerWisdom}     Intelligence: {playerIntelligence}   Charisma: {playerCharisma}
+    Background: {Fore.GREEN}{playerBackgroundName}{Style.RESET_ALL}
+    Strength: {Fore.GREEN}{playerStrength}{Style.RESET_ALL}   Constitution: {Fore.GREEN}{playerConstitution}{Style.RESET_ALL}   Dexterity: {Fore.GREEN}{playerDexterity}{Style.RESET_ALL}
+    Wisdom: {Fore.GREEN}{playerWisdom}{Style.RESET_ALL}     Intelligence: {Fore.GREEN}{playerIntelligence}{Style.RESET_ALL}   Charisma: {Fore.GREEN}{playerCharisma}{Style.RESET_ALL}
 
-    Initiative: {playerInititive}   Speed: {playerSpeed}    Health: {playerHealth}
+    Initiative: {Fore.GREEN}{playerInititive}{Style.RESET_ALL}   Speed: {Fore.GREEN}{playerSpeed}{Style.RESET_ALL}    Health: {Fore.GREEN}{playerHealth}{Style.RESET_ALL}
     -----''')
 
 # Introduction to the Game
-print('''
+print(f''' {Style.RESET_ALL}
 === Welcome to the Foulfest Caves! ===
 Traveling merchants often describe seeing caves in the cliffs south of town as they ride up from the village of
 Honeywood. The pass along the shore is the fastest route but those caves are the reason they want to reach the town
@@ -57,13 +57,13 @@ the dangers that lurk there and one can’t help but notice a stench that makes 
 playerName = input("Tell me, brave adventurer, by what name are'st thou known in these lands? : ")
 
 # Character Creation
-playerAncestry = input("Be ye [H]uman, a [D]warf or an [E]lf? : ").lower()
+playerAncestry = input(f"Be ye [{Fore.YELLOW}H{Style.RESET_ALL}{Style.RESET_ALL}]uman, a [{Fore.YELLOW}D{Style.RESET_ALL}{Style.RESET_ALL}]warf or an [{Fore.YELLOW}E{Style.RESET_ALL}{Style.RESET_ALL}]lf? : ").lower()
 
 # Create a human character
 if playerAncestry == "h":
-    print('''
+    print(f'''
 As a human, ye get two free Boosts
-You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma''')
+You can boost your [{Fore.YELLOW}S{Style.RESET_ALL}]trength, [{Fore.YELLOW}D{Style.RESET_ALL}]exterity, [{Fore.YELLOW}C{Style.RESET_ALL}]onstitution, [{Fore.YELLOW}I{Style.RESET_ALL}]ntelligence, [{Fore.YELLOW}W{Style.RESET_ALL}]isdom or [{Fore.YELLOW}Ch{Style.RESET_ALL}]arisma''')
     playerAncestryAdj = "Human"
     playerSpeed = 25
     playerHealth = 8
@@ -85,13 +85,13 @@ You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]i
 # Create a dwarven character
 elif playerAncestry == "d":
     playerAncestryAdj = "Dwarven"
-    print('''
+    print(f'''
 As a dwarf, you take a penalty to Charisma.
 You can boost your Constitution or your Strength and you get one free boost.
-[S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
+[{Fore.YELLOW}S{Style.RESET_ALL}]trength, [{Fore.YELLOW}D{Style.RESET_ALL}]exterity, [{Fore.YELLOW}C{Style.RESET_ALL}]onstitution, [{Fore.YELLOW}I{Style.RESET_ALL}]ntelligence, [{Fore.YELLOW}W{Style.RESET_ALL}]isdom or [{Fore.YELLOW}Ch{Style.RESET_ALL}]arisma
 
 Your Speed is 20 feet per round and you start with 10 Health.''')
-    playerBoost1 = input("Would you like to boost your [C]onstitution or your [S]trength? : ").lower()
+    playerBoost1 = input(f"Would you like to boost your [{Fore.YELLOW}C{Style.RESET_ALL}]onstitution or your [{Fore.YELLOW}S{Style.RESET_ALL}]trength? : ").lower()
     playerBoost2 = input("And ye get to boost one more attributes: ").lower()
     playerCharisma += -1    # Penalty = -1
     if playerBoost1 == "s" or playerBoost2 == "s": playerStrength += 1
@@ -106,13 +106,13 @@ Your Speed is 20 feet per round and you start with 10 Health.''')
 # Create an elven character
 elif playerAncestry == "e":
     playerAncestryAdj = "Elven"
-    print('''
+    print(f'''
 As an elf, you take a penalty to Strength.
 You can boost your Dexterity or your Intelligence and you get one free boost.
-[S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
+[{Fore.YELLOW}S{Style.RESET_ALL}]trength, [{Fore.YELLOW}D{Style.RESET_ALL}]exterity, [{Fore.YELLOW}C{Style.RESET_ALL}]onstitution, [{Fore.YELLOW}I{Style.RESET_ALL}]ntelligence, [{Fore.YELLOW}W{Style.RESET_ALL}]isdom or [{Fore.YELLOW}Ch{Style.RESET_ALL}]arisma
 
 Your Speed is 30 feet per round and you start with 6 Health.''')
-    playerBoost1 = input("Would you like to boost your [D]exterity or your [I]ntelligence? : ").lower()
+    playerBoost1 = input(f"Would you like to boost your [{Fore.YELLOW}D{Style.RESET_ALL}]exterity or your [{Fore.YELLOW}I{Style.RESET_ALL}]ntelligence? : ").lower()
     playerBoost2 = input("And you get to boost one more attribute: ").lower()
     playerStrength += -1  # Penalty = -1
     if playerBoost2 == "s": playerStrength += 1
@@ -125,11 +125,11 @@ Your Speed is 30 feet per round and you start with 6 Health.''')
     playerHealth = 10
 
 # Choose a Background
-print('''
+print(f'''
 Who were ye before ye took up the life or an adventurer?
-    [D]eckhand          [S]cholar
-    [F]armhand          [W]arrior
-    [G]ambler''')
+    [{Fore.YELLOW}D{Style.RESET_ALL}]eckhand          [{Fore.YELLOW}S{Style.RESET_ALL}]cholar
+    [{Fore.YELLOW}F{Style.RESET_ALL}]armhand          [{Fore.YELLOW}W{Style.RESET_ALL}]arrior
+    [{Fore.YELLOW}G{Style.RESET_ALL}]ambler''')
 playerBackground = input("Before this life, I was a: ").lower()
 if playerBackground == "d": playerBackgroundName = "Deckhand"       # Full name of background for character sheet
 elif playerBackground == "f": playerBackgroundName = "Farmhand"
@@ -148,11 +148,11 @@ if playerBoost2 == "w": playerWisdom += 1
 if playerBoost2 == "ch": playerCharisma += 1
 
 # Choose a class
-print('''
+print(f'''
 Your class describes your training and the skills you use to solve problems.
 Were ye trained as a:
-    [F]ighter       [C]leric
-    [W]izard        [R]ogue
+    [{Fore.YELLOW}F{Style.RESET_ALL}]ighter       [{Fore.YELLOW}C{Style.RESET_ALL}]leric
+    [{Fore.YELLOW}W{Style.RESET_ALL}]izard        [{Fore.YELLOW}R{Style.RESET_ALL}]ogue
 
 You also get four free boosts.''')
 playerClass = input("Choose a class: ").lower()
@@ -215,9 +215,9 @@ to shift and beckon, hinting at the mysteries and dangers that lie ahead. You no
 corner and the cave continues east into the darkness.''')
 
         # Offer some options
-        print('''
-You can [L]eave the dungeon, [S]earch the rags, [E]xamine the vines, or [G]o deeper into the caves.
-Type [C] to view your character sheet.''')
+        print(f'''
+You can [{Fore.YELLOW}L{Style.RESET_ALL}]eave the dungeon, [{Fore.YELLOW}S{Style.RESET_ALL}]earch the rags, [{Fore.YELLOW}E{Style.RESET_ALL}]xamine the vines, or [{Fore.YELLOW}G{Style.RESET_ALL}]o deeper into the caves.
+Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
         playerAction = input("What would you like to do? : ").lower()
         if playerAction == "l":                                 # Run away!!!
             print('''
@@ -254,11 +254,11 @@ a pack of giant rats emerges from the shadows, their teeth bared and eyes gleami
         # Offer some options
         print("\nYou can: ", end='')
         if foe2IsVanquished is False:
-            print("Use your [T]orch to attempt to ward off the rats ", end='')
-            print("or [A]ttack the rats.")
-        print('''
-Go back to the [W]est, Travel [E]ast or [S]outh.
-Type [C] to view your character sheet.''')
+            print(f"Use your [{Fore.YELLOW}T{Style.RESET_ALL}]orch to attempt to ward off the rats ", end='')
+            print(f"or [{Fore.YELLOW}A{Style.RESET_ALL}]ttack the rats.")
+        print(f'''
+Go back to the [{Fore.YELLOW}W{Style.RESET_ALL}]est, Travel [{Fore.YELLOW}E{Style.RESET_ALL}]ast or [{Fore.YELLOW}S{Style.RESET_ALL}]outh.
+Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
         playerAction = input("What would you like to do? : ").lower()
 
         if playerAction == "t":                                 # brandish your torch
@@ -325,9 +325,9 @@ against a stone, its bony fingers tightly clutching an ancient coffer. The scene
 presence of the skeleton hints at untold stories and hidden dangers.''')
 
         # Offer some options
-        print('''
-You can s[M]ell the flowers, [D]rink from the stream, [E]xamine the skeleton.
-Travel [W]est or [S]outh. [I]nspect the coffer or Type [C] to view your character sheet.''')
+        print(f'''
+You can s[{Fore.YELLOW}M{Style.RESET_ALL}]ell the flowers, [{Fore.YELLOW}D{Style.RESET_ALL}]rink from the stream, [{Fore.YELLOW}E{Style.RESET_ALL}]xamine the skeleton.
+Travel [{Fore.YELLOW}W{Style.RESET_ALL}]est or [{Fore.YELLOW}S{Style.RESET_ALL}]outh. [{Fore.YELLOW}I{Style.RESET_ALL}]nspect the coffer or Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
         playerAction = input("What would you like to do? : ").lower()
         if playerAction == "c": displayCharacterSheet()
         elif playerAction == "s": nowInRoom = 5
@@ -349,7 +349,7 @@ Their body shows signs of quite a struggle that ultimately ended with some very 
                 print("This skeleton has been here for quite some time. I wonder what killed them?")
         elif playerAction == "I":
             print("The coffer is held tightly in the skeleton's grasp... perhaps you could pry it loose?")
-            playerAction = input("Sure, let's try to pry it [L]oose: ").lower()
+            playerAction = input(f"Sure, let's try to pry it [{Fore.YELLOW}L{Style.RESET_ALL}]oose: ").lower()
             if playerAction == "l":
                 diceRoll = random.randint(1, 20) + playerStrength
                 if diceRoll >= 12:
@@ -399,9 +399,9 @@ with sharp claws, a beak, and glowing eyes that track your every move. The Foulf
 feathers bristling as it prepares to attack.''')
         isEngagedWithTheFoulfur = True
         while isEngagedWithTheFoulfur is True:              # Offer some options
-            print('''
-You can [A]ttack the Foulfur, [R]un away, [S]peak with the creature, [D]rink the health potion,
-[U]se your torch to intimidate the FoulFur, or [C] to view your character sheet.''')
+            print(f'''
+You can [{Fore.YELLOW}A{Style.RESET_ALL}]ttack the Foulfur, [{Fore.YELLOW}R{Style.RESET_ALL}]un away, [{Fore.YELLOW}S{Style.RESET_ALL}]peak with the creature, [{Fore.YELLOW}D{Style.RESET_ALL}]rink the health potion,
+[{Fore.YELLOW}U{Style.RESET_ALL}]se your torch to intimidate the FoulFur, or [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
             playerAction = input("What would you like to do? : ").lower()
             if playerAction == "c":                         # Show the character sheet
                 displayCharacterSheet()
