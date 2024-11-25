@@ -1,11 +1,11 @@
 '''
     package: fiveRoomDungeon.py
      author: Charles J McDonald «cmcdonald@woonsocketschools.com»
-       date: 11/21/2024
+       date: 11/25/2024
     version: Beta, ready to begin public testing
 '''
 
-from random import random
+import random
 from colorama.ansi import clear_screen
 
 # Player character sheet
@@ -47,6 +47,7 @@ def displayCharacterSheet():
 
 # Introduction to the Game
 print('''
+=== Welcome to Honeywood! ===
 Traveling merchants often describe seeing caves in the cliffs south of town as they ride up from the village of
 Honeywood. The pass along the shore is the fastest route but those caves are the reason they want to reach the town
 gates before dark. The caves exude a dark, foreboding feeling that sends a shiver up one’s spine just thinking about
@@ -61,8 +62,7 @@ playerAncestry = input("Be ye [H]uman, a [D]warf or an [E]lf? : ").lower()
 if playerAncestry == "h":
     print('''
 As a human, ye get two free Boosts
-You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma
-    ''')
+You can boost your [S]trength, [D]exterity, [C]onstitution, [I]ntelligence, [W]isdom or [Ch]arisma''')
     playerAncestryAdj = "Human"
     playerSpeed = 25
     playerHealth = 8
@@ -189,21 +189,25 @@ elif playerClass == "r":
 # Your initiative is your Wisdom bonus
 playerInititive = playerWisdom
 
+clear_screen()
+print("So, let's now look at your character sheet.")
 displayCharacterSheet()
-iAmReadyToBegin = input("Press Enter when you are ready to begin... > ")
+iAmReadyToBegin = input("Press Enter when you are ready to begin... > ")    # This is a throw-away variable
 clear_screen()
 
 # Let's begin our Story
 nowInRoom = 1
-foe2IsVanquished = False
+foe2IsVanquished = False                                        # Set up for foe health tracking
 foe2Health = 6
 foe5IsVanquished = False
 foe5Health = 12
 exploringTheDungeon = True
 while exploringTheDungeon is True:
     if nowInRoom == 1:                                          # Enter Room 1
+        clear_screen()
         # Describe the room
         print('''
+=== Welcome to the Foulfest Caves ===
 The cave entrance looms before you, a dark maw set into the rugged hillside. Vines and moss cling to the
 rocky edges, and a faint, cool breeze carries the scent of damp earth from within. The shadows inside seem
 to shift and beckon, hinting at the mysteries and dangers that lie ahead. You notice a pile of rags in one
@@ -232,11 +236,13 @@ Drinking this will restore some health!''')
             print('''
 Cutting back the vines reveals some runic writing painted on the wall along with images
 of a large, feathered beast with terrible claws.''')
+
         elif playerAction == "g": nowInRoom = 2
         elif playerAction == "c": displayCharacterSheet()       # Show the character sheet
         else: print("That's not a valid option.")
 
     elif nowInRoom == 2:                                        # Moving into room 2
+        clear_screen()
         # Describe the room
         print("As you cautiously make your way down the narrow east passageway, the air grows colder and the light dims.")
         if foe2IsVanquished is False:
@@ -245,12 +251,13 @@ Suddenly, you hear the scurrying of tiny feet and the glint of eyes reflecting i
 a pack of giant rats emerges from the shadows, their teeth bared and eyes gleaming with hunger.''')
 
         # Offer some options
+        print("\nYou can: ", end='')
         if foe2IsVanquished is False:
-            print("You can: Use your [T]orch to attempt to ward off the rats ", end='')
+            print("Use your [T]orch to attempt to ward off the rats ", end='')
             print("or [A]ttack the rats.")
-        print('''Go back to the [W]est, Travel [E]ast or [S]outh.
-Type [C] to view your character sheet.
-        ''')
+        print('''
+Go back to the [W]est, Travel [E]ast or [S]outh.
+Type [C] to view your character sheet.''')
         playerAction = input("What would you like to do? : ").lower()
 
         if playerAction == "t":                                 # brandish your torch
@@ -307,15 +314,19 @@ Type [C] to view your character sheet.
             print("That's not a valid option.")
 
     elif nowInRoom == 3:                                        # Moving into room 3
+        clear_screen()
         # Describe the room
-        print('''Venturing deeper into the cave, you find yourself in a small, unexpected garden oasis.
+        print('''
+        Venturing deeper into the cave, you find yourself in a small, unexpected garden oasis.
         The air is filled with the sweet scent of blooming flowers, and a gentle stream trickles nearby.
         Light shines in through a hole in the cave roof. Amidst the lush greenery, a lone skeleton sits propped
         against a stone, its bony fingers tightly clutching an ancient coffer. The scene is eerily serene, yet the
         presence of the skeleton hints at untold stories and hidden dangers.''')
+
         # Offer some options
-        print('''You can s[M]ell the flowers, [D]rink from the stream, [E]xamine the skeleton.
-        Travel [W]est or [S]outh. [I]nspect the coffer or Type [C] to view your character sheet.''')
+        print('''
+You can s[M]ell the flowers, [D]rink from the stream, [E]xamine the skeleton.
+Travel [W]est or [S]outh. [I]nspect the coffer or Type [C] to view your character sheet.''')
         playerAction = input("What would you like to do? : ").lower()
         if playerAction == "c": displayCharacterSheet()
         elif playerAction == "s": nowInRoom = 5
@@ -323,14 +334,16 @@ Type [C] to view your character sheet.
         elif playerAction == "m":
             print("You plant your nose in the flowers and take in a deep breath. Ahhhhh, you exclaim.")
         elif playerAction == "d":
-            print('''You bend down and lap some fresh water from the babbling stream.
-            Absolutely nothing untoward happens... that you know of...''')
+            print('''
+You bend down and lap some fresh water from the babbling stream.
+Absolutely nothing untoward happens... that you know of...''')
         elif playerAction == "e":
             diceRoll = random.randint(1, 20) + playerWisdom
             if diceRoll >= 8:
-                print(f'''You roll {diceRoll} perception.
-                Inspecting the skeleton, can tell that this once-adventurer fell to some beast, long forgotten.
-                Their body shows signs of quite a struggle that ultimately ended with some very sharp claws.''')
+                print(f'''
+You roll {diceRoll} perception.
+Inspecting the skeleton, can tell that this once-adventurer fell to some beast, long forgotten.
+Their body shows signs of quite a struggle that ultimately ended with some very sharp claws.''')
             else:
                 print("This skeleton has been here for quite some time. I wonder what killed them?")
         elif playerAction == "I":
@@ -339,30 +352,34 @@ Type [C] to view your character sheet.
             if playerAction == "l":
                 diceRoll = random.randint(1, 20) + playerStrength
                 if diceRoll >= 12:
-                    print(f'''You roll a {diceRoll}!
+                    print(f'''
+You roll a {diceRoll}!
 With your brutish strength, you pry the coffer from the skeleton\'s bony hands and easily open it.
 The coffer contains 50 pieces of the kings gold coin - more than enough to make this trip a
 financial success!''')
                 else:
-                    print(f'''You roll a {diceRoll}.
+                    print(f'''
+You roll a {diceRoll}.
 Try as you might, you just can't wrest the coffer from the skeleton's grasp.''')
 
     elif nowInRoom == 4:                                        # Move to Room 4
         # Describe the room
         print('''
-    Carefully making your way into this next room, you find yourself standing on a precarious, slippery ledge.
-    Below, a vast chasm stretches out, its depths shrouded in darkness. The sound of distant water echoes up from
-    the abyss, and the ledge beneath your feet feels unstable, threatening to give way at any moment.''')
+Carefully making your way into this next room, you find yourself standing on a precarious, slippery ledge.
+Below, a vast chasm stretches out, its depths shrouded in darkness. The sound of distant water echoes up from
+the abyss, and the ledge beneath your feet feels unstable, threatening to give way at any moment.''')
 
         diceRoll = random.randint(1,20)                     # Make a reflex save or slip over the edge
         if hasTorches is False: diceRoll += -2              # Penalty for no torches
         diceRoll += playerDexterity                         # Add DEX to the roll
         if diceRoll >= 12:
-            print(f'''You roll a {diceRoll} and make a reflex save!
+            print(f'''
+You roll a {diceRoll} and make a reflex save!
 Although quite perilous, you are sure-footed and make it across the chasm into the next room.''')
             nowInRoom = 5                                   # Succeed, move to Room 5
         else:
-            print(f'''You roll a {diceRoll} and fail a reflex save.
+            print(f'''
+You roll a {diceRoll} and fail a reflex save.
 The precarious ledge is quite slippery and you lose your footing! You slide over the edge and down into
 the chasm taking 4 damage''', end = '')
             nowInRoom = 2                                   # Fail, move back to room 2
@@ -374,14 +391,16 @@ the chasm taking 4 damage''', end = '')
                 print('''. At the bottom, you brush yourself off and find a path back up.''')
     elif nowInRoom == 5:                                    # On to the final room!  Woot!!!
         # Describe the room
-        print('''As you step into the final room of the dungeon, a foul stench assaults your senses. In the dim light,
-    you spot a large, menacing creature lurking in the shadows. Its body is a grotesque fusion of a wolf and a chicken,
-    with sharp claws, a beak, and glowing eyes that track your every move. The foulfur lets out a low growl, its
-    feathers bristling as it prepares to attack.''')
+        print('''
+As you step into the final room of the dungeon, a foul stench assaults your senses. In the dim light,
+you spot a large, menacing creature lurking in the shadows. Its body is a grotesque fusion of a wolf and a chicken,
+with sharp claws, a beak, and glowing eyes that track your every move. The foulfur lets out a low growl, its
+feathers bristling as it prepares to attack.''')
         isEngagedWithTheFoulfur = True
         while isEngagedWithTheFoulfur is True:              # Offer some options
-            print('''You can [A]ttack the Foulfur, [R]un away, [S]peak with the creature, [D]rink the health potion,
-                [U]se your torch to intimidate the FoulFur, or [C] to view your character sheet.''')
+            print('''
+You can [A]ttack the Foulfur, [R]un away, [S]peak with the creature, [D]rink the health potion,
+[U]se your torch to intimidate the FoulFur, or [C] to view your character sheet.''')
             playerAction = input("What would you like to do? : ").lower()
             if playerAction == "c":                         # Show the character sheet
                 displayCharacterSheet()
@@ -410,8 +429,9 @@ the chasm taking 4 damage''', end = '')
                     foe5Health -= playerDamage
                     if foe5Health <= 0:
                         print("The Foulfur is vanquished!")
-                        print('''As the beast collapses, you notice a modest trove of teasure amongst her belongings.
-                              You find 50 gold coins and a sword that bristles with a magical aura.''')
+                        print('''
+As the beast collapses, you notice a modest trove of teasure amongst her belongings.
+You find 50 gold coins and a sword that bristles with a magical aura.''')
                         isEngagedWithTheFoulfur = False
                         exploringTheDungeon = False
                     else:
@@ -432,28 +452,32 @@ the chasm taking 4 damage''', end = '')
             elif playerAction == "s":                       # Speak with the creature
                 diceRoll = random.randint(1, 20) + playerIntelligence
                 if diceRoll >= 16:
-                    print('''You mimic the Foulfur's gutteral barks and feather motions attempting to speak with her.
-                    The Foulfur seems to understand and tells you that she is a guardian of the cave and, seeing that you
-                    are not a threat, allows you to pass down a tunnel to the east.
-                    The Foulfur offers you 10 gold pieces and a shiny magic sword as a reward for your bravery.''')
+                    print('''
+You mimic the Foulfur's gutteral barks and feather motions attempting to speak with her.
+The Foulfur seems to understand and tells you that she is a guardian of the cave and, seeing
+that you are not a threat, allows you to pass down a tunnel to the east.
+The Foulfur offers you 10 gold pieces and a shiny magic sword as a reward for your bravery.''')
                     isEngagedWithTheFoulfur = False
                     exploringTheDungeon = False
                 else:
                     playerHealth += -1
-                    print(f'''You merely anger the Foulfur who takes a swipe at you with her powerful tail
-                        doing 1 point of damage. You have {playerHealth} left.''')
+                    print(f'''
+You merely anger the Foulfur who takes a swipe at you with her powerful tail
+doing 1 point of damage. You have {playerHealth} left.''')
             elif playerAction == "u":                       # Use the torch
                 diceRoll = random.randint(1, 20) + playerCharisma
                 if diceRoll >= 14:
-                    print(f'''You roll a {diceRoll} and brandish your torch at the Foulfur.
-                    The beast is frightened by the fire and backs away, allowing you to pass to the east.''')
+                    print(f'''
+You roll a {diceRoll} and brandish your torch at the Foulfur.
+The beast is frightened by the fire and backs away, allowing you to pass to the east.''')
                     isEngagedWithTheFoulfur = False
                     exploringTheDungeon = False
                 else:
                     playerHealth += -1
-                    print(f'''You roll a {diceRoll} and brandish your torch at the Foulfur.
-                    The beast is not impressed and takes a swipe at you with her powerful tail
-                    doing 1 point of damage. You have {playerHealth} left.''')
+                    print(f'''
+You roll a {diceRoll} and brandish your torch at the Foulfur.
+The beast is not impressed and takes a swipe at you with her powerful tail
+doing 1 point of damage. You have {playerHealth} left.''')
             else:
                 print("That's not a valid option.")
 
