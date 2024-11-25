@@ -245,8 +245,8 @@ Suddenly, you hear the scurrying of tiny feet and the glint of eyes reflecting i
 a pack of giant rats emerges from the shadows, their teeth bared and eyes gleaming with hunger.''')
 
         # Offer some options
-        print("You can: Use your [T]orch to attempt to ward off the rats ", end = '')
         if foe2IsVanquished is False:
+            print("You can: Use your [T]orch to attempt to ward off the rats ", end='')
             print("or [A]ttack the rats.")
         print('''Go back to the [W]est, Travel [E]ast or [S]outh
 Type [C] to view your character sheet.''')
