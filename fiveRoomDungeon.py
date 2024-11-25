@@ -454,7 +454,7 @@ You find 50 gold coins and a sword that bristles with a magical aura.''')
                 diceRoll = random.randint(1, 20) + playerIntelligence
                 if diceRoll >= 16:
                     print('''
-You mimic the Foulfur's gutteral barks and feather motions attempting to speak with her.
+You mimic the Foulfur's guttural barks and feather motions attempting to speak with her.
 The Foulfur seems to understand and tells you that she is a guardian of the cave and, seeing
 that you are not a threat, allows you to pass down a tunnel to the east.
 The Foulfur offers you 10 gold pieces and a shiny magic sword as a reward for your bravery.''')
