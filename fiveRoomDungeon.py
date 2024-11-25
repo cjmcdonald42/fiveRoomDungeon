@@ -2,7 +2,8 @@
     package: fiveRoomDungeon.py
      author: Charles J McDonald «cmcdonald@woonsocketschools.com»
        date: 11/25/2024
-    version: Beta, ready to begin public testing
+    version: 1.0 β
+    maturity: Beta, ready for public testing
 '''
 
 import random
