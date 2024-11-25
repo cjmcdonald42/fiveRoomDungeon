@@ -431,7 +431,7 @@ You can [A]ttack the Foulfur, [R]un away, [S]peak with the creature, [D]rink the
                     if foe5Health <= 0:
                         print("The Foulfur is vanquished!")
                         print('''
-As the beast collapses, you notice a modest trove of teasure amongst her belongings.
+As the beast collapses, you notice a modest trove of treasure amongst her belongings.
 You find 50 gold coins and a sword that bristles with a magical aura.''')
                         isEngagedWithTheFoulfur = False
                         exploringTheDungeon = False
