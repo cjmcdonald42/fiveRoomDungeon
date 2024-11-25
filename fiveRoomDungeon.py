@@ -318,11 +318,11 @@ Type [C] to view your character sheet.''')
         clear_screen()
         # Describe the room
         print('''
-        Venturing deeper into the cave, you find yourself in a small, unexpected garden oasis.
-        The air is filled with the sweet scent of blooming flowers, and a gentle stream trickles nearby.
-        Light shines in through a hole in the cave roof. Amidst the lush greenery, a lone skeleton sits propped
-        against a stone, its bony fingers tightly clutching an ancient coffer. The scene is eerily serene, yet the
-        presence of the skeleton hints at untold stories and hidden dangers.''')
+Venturing deeper into the cave, you find yourself in a small, unexpected garden oasis.
+The air is filled with the sweet scent of blooming flowers, and a gentle stream trickles nearby.
+Light shines in through a hole in the cave roof. Amidst the lush greenery, a lone skeleton sits propped
+against a stone, its bony fingers tightly clutching an ancient coffer. The scene is eerily serene, yet the
+presence of the skeleton hints at untold stories and hidden dangers.''')
 
         # Offer some options
         print('''
