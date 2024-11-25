@@ -7,7 +7,7 @@
 '''
 
 import random
-from colorama.ansi import clear_screen, Fore, Back, Style
+from colorama.ansi import clear_screen, Fore, Style
 
 # Player character sheet
 playerName = ''
