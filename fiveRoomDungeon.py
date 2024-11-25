@@ -395,7 +395,7 @@ the chasm taking 4 damage''', end = '')
         print('''
 As you step into the final room of the dungeon, a foul stench assaults your senses. In the dim light,
 you spot a large, menacing creature lurking in the shadows. Its body is a grotesque fusion of a wolf and a chicken,
-with sharp claws, a beak, and glowing eyes that track your every move. The foulfur lets out a low growl, its
+with sharp claws, a beak, and glowing eyes that track your every move. The Foulfur lets out a low growl, its
 feathers bristling as it prepares to attack.''')
         isEngagedWithTheFoulfur = True
         while isEngagedWithTheFoulfur is True:              # Offer some options
