@@ -48,7 +48,7 @@ def displayCharacterSheet():
 
 # Introduction to the Game
 print('''
-=== Welcome to Honeywood! ===
+=== Welcome to the Foulfest Caves! ===
 Traveling merchants often describe seeing caves in the cliffs south of town as they ride up from the village of
 Honeywood. The pass along the shore is the fastest route but those caves are the reason they want to reach the town
 gates before dark. The caves exude a dark, foreboding feeling that sends a shiver up one’s spine just thinking about
