@@ -266,7 +266,7 @@ Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
             print("You brandish your torch, waving the flame in front of the rats to ward them off.")
             if diceRoll >= 12:
                 print("The rats are frightened by your intimidating presence, and of course the fire, and scurry away.")
-                foeIsVanquished = True
+                foe2IsVanquished = True
             else:
                 print("The rats remain unimpressed by your ineffectual display!")
         elif playerAction == "a":                               # Attack the rats
