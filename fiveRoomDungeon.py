@@ -1,9 +1,9 @@
 '''
-    package: fiveRoomDungeon.py
-     author: Charles J McDonald «cmcdonald@woonsocketschools.com»
-       date: 11/26/2024
-    version: 1.0 β
-    maturity: Beta, ready for public testing
+      package:  fiveRoomDungeon.py
+       author:  Charles J McDonald «cmcdonald@woonsocketschools.com»
+         date:  2024.12.01
+      version:  1.0 β
+     maturity:  Beta, ready for public testing
 '''
 
 import random
@@ -256,8 +256,7 @@ a pack of giant rats emerges from the shadows, their teeth bared and eyes gleami
         if foe2IsVanquished is False:
             print(f"Use your [{Fore.YELLOW}T{Style.RESET_ALL}]orch to attempt to ward off the rats ", end='')
             print(f"or [{Fore.YELLOW}A{Style.RESET_ALL}]ttack the rats.")
-        print(f'''
-Go back to the [{Fore.YELLOW}W{Style.RESET_ALL}]est, Travel [{Fore.YELLOW}E{Style.RESET_ALL}]ast or [{Fore.YELLOW}S{Style.RESET_ALL}]outh.
+        print(f'''Go back to the [{Fore.YELLOW}W{Style.RESET_ALL}]est, Travel [{Fore.YELLOW}E{Style.RESET_ALL}]ast or [{Fore.YELLOW}S{Style.RESET_ALL}]outh.
 Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
         playerAction = input("What would you like to do? : ").lower()
 
@@ -270,6 +269,7 @@ Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
             else:
                 print("The rats remain unimpressed by your ineffectual display!")
         elif playerAction == "a":                               # Attack the rats
+            # TODO - Add Initiative to the combat loop
             diceRoll = random.randint(1, 20) + playerAttack
             if diceRoll >= 12:
                 if playerClass == "f":
@@ -294,6 +294,9 @@ Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
                         print("The rats swarm you and do 2 points of damage. You fall down and the world goes dark.")
                     else:
                         print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
+            else:
+                pass  # Missed the attack
+
         elif playerAction == "w":                               # describe moving to Room 1
             if foe2IsVanquished is False:
                 print("You cannot retreat while in combat with the rats.")
