@@ -203,6 +203,7 @@ foe2Health = 6
 foe5IsVanquished = False
 foe5Health = 12
 exploringTheDungeon = True
+triedThisAlready = False                                        # Room 2, use torches
 while exploringTheDungeon is True:
     if nowInRoom == 1:                                          # Enter Room 1
         clear_screen()
@@ -254,20 +255,26 @@ a pack of giant rats emerges from the shadows, their teeth bared and eyes gleami
         # Offer some options
         print("\nYou can: ", end='')
         if foe2IsVanquished is False:
-            print(f"Use your [{Fore.YELLOW}T{Style.RESET_ALL}]orch to attempt to ward off the rats ", end='')
-            print(f"or [{Fore.YELLOW}A{Style.RESET_ALL}]ttack the rats.")
+            if triedThisAlready is False:
+                print(f"Use your [{Fore.YELLOW}T{Style.RESET_ALL}]orch to attempt to ward off the rats or", end=' ')
+            print(f"[{Fore.YELLOW}A{Style.RESET_ALL}]ttack the rats.")
         print(f'''Go back to the [{Fore.YELLOW}W{Style.RESET_ALL}]est, Travel [{Fore.YELLOW}E{Style.RESET_ALL}]ast or [{Fore.YELLOW}S{Style.RESET_ALL}]outh.
 Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
         playerAction = input("What would you like to do? : ").lower()
 
         if playerAction == "t":                                 # brandish your torch
-            diceRoll = random.randint(1, 20) + playerStrength   # Roll a d20 and add STR, DC = 15
-            print("You brandish your torch, waving the flame in front of the rats to ward them off.")
-            if diceRoll >= 12:
-                print("The rats are frightened by your intimidating presence, and of course the fire, and scurry away.")
-                foe2IsVanquished = True
+            if triedThisAlready is False:
+                diceRoll = random.randint(1, 20) + playerStrength   # Roll a d20 and add STR, DC = 15
+                print("You brandish your torch, waving the flame in front of the rats to ward them off.")
+                if diceRoll >= 12:
+                    print(f"You roll a {diceRoll} and frighten the rats with your intimidating presence, and of course the fire. They scurry away.")
+                    foe2IsVanquished = True
+                else:
+                    print("The rats remain unimpressed by your ineffectual display!")
+                triedThisAlready = True                         # Can only try this once
             else:
-                print("The rats remain unimpressed by your ineffectual display!")
+                print("You've already tried to scare the rats away with your torch.")
+
         elif playerAction == "a":                               # Attack the rats
             # TODO - Add Initiative to the combat loop
             diceRoll = random.randint(1, 20) + playerAttack
