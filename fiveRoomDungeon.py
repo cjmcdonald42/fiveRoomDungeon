@@ -282,9 +282,9 @@ Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
 
         elif playerAction == "a":                                   # Attack the rats
             playerDiceRoll = random.randint(1, 20) + playerInititive      # roll initiative
-            if hasTorches is False: playerDiceRoll += -2            # Penalty for no torches
+            if hasTorches is False: playerDiceRoll -= 2             # Penalty for no torches
             creatureDiceRoll = random.randint(1, 20)
-            if playerDiceRoll >= creatureDiceRoll:               # Player attacks first
+            if playerDiceRoll >= creatureDiceRoll:                  # Player attacks first
                 print("You have the initiative and attack the rats first.")
                 diceRoll = random.randint(1, 20) + playerAttack
                 if diceRoll >= 12:
@@ -301,26 +301,28 @@ Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
                         playerDamage = random.randint(1, 8) + 2
                         print(f"You call upon your divine will to strike the rats, doing {playerDamage}.")
                     foe2Health -= playerDamage
-                    if foe2Health <= 0:
-                        print("The rat swarm is vanquished!")
-                        foe2IsVanquished = True
+                else:
+                    print("Your attack misses. The rats go into a fighting frenzy!")
+                if foe2Health <= 0:
+                    print("The rat swarm is vanquished!")
+                    foe2IsVanquished = True
+                else:
+                    playerHealth -= 2
+                    if playerHealth <= 0:
+                        print("The rats swarm you and do 2 points of damage. You fall down and the world goes dark.")
+                        exploringTheDungeon = False
                     else:
-                        playerHealth += -2
-                        if playerHealth <= 0:
-                            print("The rats swarm you and do 2 points of damage. You fall down and the world goes dark.")
-                            exploringTheDungeon = False
-                        else:
-                            print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
+                        print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
             else:                                                   # Rats attack first
                 print("The rats have the initiative and they attack.")
-                playerHealth += -2
+                playerHealth -= 2
                 if playerHealth <= 0:
                     print("The rats swarm you and do 2 points of damage. You fall down and the world goes dark.")
                     exploringTheDungeon = False
                 else:
                     print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
                     diceRoll = random.randint(1, 20) + playerAttack
-                    if hasTorches is False: playerDiceRoll += -2    # Penalty for no torches
+                    if hasTorches is False: DiceRoll += -2    # Penalty for no torches
                     if diceRoll >= 12:
                         if playerClass == "f":
                             playerDamage = random.randint(1, 8) + 2
@@ -338,6 +340,8 @@ Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
                         if foe2Health <= 0:
                             print("The rat swarm is vanquished!")
                             foe2IsVanquished = True
+                    else:
+                        print("Your attack misses. The rats go into a fighting frenzy!")
 
         elif playerAction == "w":                               # describe moving to Room 1
             if foe2IsVanquished is False:
