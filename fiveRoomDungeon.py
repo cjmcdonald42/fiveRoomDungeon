@@ -247,6 +247,8 @@ of a large, feathered beast with terrible claws.''')
         clear_screen()
         # Describe the room
         print("As you cautiously make your way down the narrow east passageway, the air grows colder and the light dims.")
+        if hasTorches is True:
+            print("The light from your torch illuminates the small chamber ahead.")
         if foe2IsVanquished is False:
             print('''
 Suddenly, you hear the scurrying of tiny feet and the glint of eyes reflecting in the darkness. Before you can react,
@@ -263,46 +265,79 @@ Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
         playerAction = input("What would you like to do? : ").lower()
 
         if playerAction == "t":                                 # brandish your torch
-            if triedThisAlready is False:
-                diceRoll = random.randint(1, 20) + playerStrength   # Roll a d20 and add STR, DC = 15
-                print("You brandish your torch, waving the flame in front of the rats to ward them off.")
-                if diceRoll >= 12:
-                    print(f"You roll a {diceRoll} and frighten the rats with your intimidating presence, and of course the fire. They scurry away.")
-                    foe2IsVanquished = True
-                else:
-                    print("The rats remain unimpressed by your ineffectual display!")
-                triedThisAlready = True                         # Can only try this once
-            else:
-                print("You've already tried to scare the rats away with your torch.")
-
-        elif playerAction == "a":                               # Attack the rats
-            # TODO - Add Initiative to the combat loop
-            diceRoll = random.randint(1, 20) + playerAttack
-            if diceRoll >= 12:
-                if playerClass == "f":
-                    playerDamage = random.randint(1, 8) + 2
-                    print(f"You swing your sword and strike the rats, doing {playerDamage}.")
-                elif playerClass == "w":
-                    playerDamage = random.randint(1, 8) + 2
-                    print(f"You cast a magic spell and strike the rats, doing {playerDamage}.")
-                elif playerClass == "r":
-                    playerDamage = random.randint(1, 4) + random.randint(1, 4)+ 2
-                    print(f"You sneak up on the rats and strike, doing {playerDamage}.")
-                elif playerClass == "c":
-                    playerDamage = random.randint(1, 8) + 2
-                    print(f"You call upon your divine will to strike the rats, doing {playerDamage}.")
-                foe2Health -= playerDamage
-                if foe2Health <= 0:
-                    print("The rat swarm is vanquished!")
-                    foe2IsVanquished = True
-                else:
-                    playerHealth -= 2
-                    if playerHealth <= 0:
-                        print("The rats swarm you and do 2 points of damage. You fall down and the world goes dark.")
+            if hasTorches is True:                              # Did you pick up the torches in room 1?
+                if triedThisAlready is False:
+                    diceRoll = random.randint(1, 20) + playerStrength   # Roll a d20 and add STR, DC = 15
+                    print("You brandish your torch, waving the flame in front of the rats to ward them off.")
+                    if diceRoll >= 12:
+                        print(f"You roll a {diceRoll} and frighten the rats with your intimidating presence, and of course the fire. They scurry away.")
+                        foe2IsVanquished = True
                     else:
-                        print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
+                        print("The rats remain unimpressed by your ineffectual display!")
+                    triedThisAlready = True                         # Can only try this once
+                else:
+                    print("You've already tried to scare the rats away with your torch.")
             else:
-                pass  # Missed the attack
+                print("If only you had some torches...")
+
+        elif playerAction == "a":                                   # Attack the rats
+            playerDiceRoll = random.randint(1, 20) + playerInititive      # roll initiative
+            if hasTorches is False: playerDiceRoll += -2            # Penalty for no torches
+            creatureDiceRoll = random.randint(1, 20)
+            if playerDiceRoll >= creatureDiceRoll:               # Player attacks first
+                print("You have the initiative and attack the rats first.")
+                diceRoll = random.randint(1, 20) + playerAttack
+                if diceRoll >= 12:
+                    if playerClass == "f":
+                        playerDamage = random.randint(1, 8) + 2
+                        print(f"You swing your sword and strike the rats, doing {playerDamage}.")
+                    elif playerClass == "w":
+                        playerDamage = random.randint(1, 8) + 2
+                        print(f"You cast a magic spell and strike the rats, doing {playerDamage}.")
+                    elif playerClass == "r":
+                        playerDamage = random.randint(1, 4) + random.randint(1, 4) + 2
+                        print(f"You sneak up on the rats and strike, doing {playerDamage}.")
+                    elif playerClass == "c":
+                        playerDamage = random.randint(1, 8) + 2
+                        print(f"You call upon your divine will to strike the rats, doing {playerDamage}.")
+                    foe2Health -= playerDamage
+                    if foe2Health <= 0:
+                        print("The rat swarm is vanquished!")
+                        foe2IsVanquished = True
+                    else:
+                        playerHealth += -2
+                        if playerHealth <= 0:
+                            print("The rats swarm you and do 2 points of damage. You fall down and the world goes dark.")
+                            exploringTheDungeon = False
+                        else:
+                            print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
+            else:                                                   # Rats attack first
+                print("The rats have the initiative and they attack.")
+                playerHealth += -2
+                if playerHealth <= 0:
+                    print("The rats swarm you and do 2 points of damage. You fall down and the world goes dark.")
+                    exploringTheDungeon = False
+                else:
+                    print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
+                    diceRoll = random.randint(1, 20) + playerAttack
+                    if hasTorches is False: playerDiceRoll += -2    # Penalty for no torches
+                    if diceRoll >= 12:
+                        if playerClass == "f":
+                            playerDamage = random.randint(1, 8) + 2
+                            print(f"You swing your sword and strike the rats, doing {playerDamage}.")
+                        elif playerClass == "w":
+                            playerDamage = random.randint(1, 8) + 2
+                            print(f"You cast a magic spell and strike the rats, doing {playerDamage}.")
+                        elif playerClass == "r":
+                            playerDamage = random.randint(1, 4) + random.randint(1, 4) + 2
+                            print(f"You sneak up on the rats and strike, doing {playerDamage}.")
+                        elif playerClass == "c":
+                            playerDamage = random.randint(1, 8) + 2
+                            print(f"You call upon your divine will to strike the rats, doing {playerDamage}.")
+                        foe2Health -= playerDamage
+                        if foe2Health <= 0:
+                            print("The rat swarm is vanquished!")
+                            foe2IsVanquished = True
 
         elif playerAction == "w":                               # describe moving to Room 1
             if foe2IsVanquished is False:
