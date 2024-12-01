@@ -392,7 +392,7 @@ Inspecting the skeleton, can tell that this once-adventurer fell to some beast, 
 Their body shows signs of quite a struggle that ultimately ended with some very sharp claws.''')
             else:
                 print("This skeleton has been here for quite some time. I wonder what killed them?")
-        elif playerAction == "I":
+        elif playerAction == "i":
             print("The coffer is held tightly in the skeleton's grasp... perhaps you could pry it loose?")
             playerAction = input(f"Sure, let's try to pry it [{Fore.YELLOW}L{Style.RESET_ALL}]oose: ").lower()
             if playerAction == "l":
@@ -462,7 +462,7 @@ You can [{Fore.YELLOW}A{Style.RESET_ALL}]ttack the Foulfur, [{Fore.YELLOW}R{Styl
                 if hasTorches is False: playerDiceRoll -= 2         # Penalty for no torches
                 creatureDiceRoll = random.randint(1, 20)
                 diceRoll = random.randint(1, 20) + playerAttack     # Player's Attack Roll
-                if hasTorches is False: DiceRoll += -2              # Penalty for no torches
+                if hasTorches is False: diceRoll += -2              # Penalty for no torches
                 creatureDamage = random.randint(1, 4)         # Creature's Damage Roll
                 if playerDiceRoll >= creatureDiceRoll:              # Player attacks first
                     if diceRoll >= 12:
@@ -479,20 +479,22 @@ You can [{Fore.YELLOW}A{Style.RESET_ALL}]ttack the Foulfur, [{Fore.YELLOW}R{Styl
                             playerDamage = random.randint(1, 8) + 2
                             print(f"You call upon your divine will to strike the Foulfur, doing {playerDamage}.")
                         foe5Health -= playerDamage
-                        if foe5Health <= 0:
-                            print("The Foulfur is vanquished!")
-                            print('''
+                    else:
+                        print("Argh! Your attack misses, doing no damage to the Foulfur.")
+                    if foe5Health <= 0:
+                        print("The Foulfur is vanquished!")
+                        print('''
 As the beast collapses, you notice a modest trove of treasure amongst her belongings.
 You find 50 gold coins and a sword that bristles with a magical aura.''')
-                            isEngagedWithTheFoulfur = False
+                        isEngagedWithTheFoulfur = False
+                        exploringTheDungeon = False
+                    else:
+                        playerHealth -= creatureDamage
+                        if playerHealth <= 0:
+                            print(f"The Foulfur strikes you doing {creatureDamage} points of damage. You fall down and the world goes dark.")
                             exploringTheDungeon = False
                         else:
-                            playerHealth -= creatureDamage
-                            if playerHealth <= 0:
-                                print(f"The Foulfur strikes you doing {creatureDamage} points of damage. You fall down and the world goes dark.")
-                                exploringTheDungeon = False
-                            else:
-                                print(f"The Foulfur strikes you doing {creatureDamage} points of damage. You have {playerHealth} left.")
+                            print(f"The Foulfur strikes you doing {creatureDamage} points of damage. You have {playerHealth} left.")
                 else:                                               # Foulfur attacks first
                     playerHealth -= creatureDamage
                     if playerHealth <= 0:
@@ -513,14 +515,17 @@ You find 50 gold coins and a sword that bristles with a magical aura.''')
                             elif playerClass == "c":
                                 playerDamage = random.randint(1, 8) + 2
                                 print(f"You call upon your divine will to strike the Foulfur, doing {playerDamage}.")
+                            else:
+                                playerDamage = 0
+                                print("Argh! Your attack misses, doing no damage to the Foulfur.")
                             foe5Health -= playerDamage
-                            if foe5Health <= 0:
-                                print("The Foulfur is vanquished!")
-                                print('''
+                        if foe5Health <= 0:
+                            print("The Foulfur is vanquished!")
+                            print('''
 As the beast collapses, you notice a modest trove of treasure amongst her belongings.
 You find 50 gold coins and a sword that bristles with a magical aura.''')
-                                isEngagedWithTheFoulfur = False
-                                exploringTheDungeon = False
+                            isEngagedWithTheFoulfur = False
+                            exploringTheDungeon = False
             elif playerAction == "r":                       # Run away
                 if foe5Health >= 6:
                     playerHealth += -1
