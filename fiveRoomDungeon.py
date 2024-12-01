@@ -322,7 +322,7 @@ Type [{Fore.YELLOW}C{Style.RESET_ALL}] to view your character sheet.''')
                 else:
                     print(f"The rats swarm you and do 2 points of damage. You have {playerHealth} left.")
                     diceRoll = random.randint(1, 20) + playerAttack
-                    if hasTorches is False: DiceRoll += -2    # Penalty for no torches
+                    if hasTorches is False: diceRoll += -2    # Penalty for no torches
                     if diceRoll >= 12:
                         if playerClass == "f":
                             playerDamage = random.randint(1, 8) + 2
