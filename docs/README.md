@@ -36,4 +36,4 @@ request to merge your branch into the active development branch of this reposito
 [^1]: Learn more about [Johann Four and the Five Room Dungeon by clicking here](https://www.roleplayingtips.com/5-room-dungeons/).
 
 ---
-#### This work © 2024 by Charles J McDonald is [licensed under CC BY-NC-SA 4.0](https://github.com/cjmcdonald42/fiveRoomDungeon/blob/main/docs/LICENSE.md)
+_This work © 2024 by Charles J McDonald is [licensed under CC BY-NC-SA 4.0](https://github.com/cjmcdonald42/fiveRoomDungeon/blob/main/docs/LICENSE.md)_
