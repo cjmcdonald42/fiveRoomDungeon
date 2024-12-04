@@ -17,8 +17,8 @@ the dangers that lurk there and one can’t help but notice a stench that makes 
 The FoulFest Caves is a text-based, RPG experience for one player written in Python. This project is done as a capstone
 coding and game design experience for my PTech Students. The game is based on Johann Four's Five-Room-Dungeon design
 model[^1] and counts for up to four hours of Work-Based Learning. The mechanics and rules of this game are loosely
-based on the Remastered Second Edition of the Pathfinder RPG system, published by [Paizo, Inc.](https://paizo.com)
-under the [Open RPG Creative License](https://paizo.com/orclicense).
+based on the Remastered Second Edition of the [Pathfinder RPG system](https://paizo.com/pathfinder/beginnerbox),
+published by [Paizo, Inc.](https://paizo.com) under the [Open RPG Creative License](https://paizo.com/orclicense).
 
 ![Paizo, Inc](/assets/paizo.png)
 ![Pathfinder Role Playing Game](/assets/2E-Logo150.png)
