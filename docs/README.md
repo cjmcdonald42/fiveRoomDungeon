@@ -1,6 +1,6 @@
      package:   fiveRoomDungeon.py
       author:   Charles J McDonald «cmcdonald@woonsocketschools.com»
-        date:   2024.12.01
+        date:   2024.12.04
      version:   1.0 β
     maturity:   Beta, ready for public testing
 
@@ -16,7 +16,11 @@ the dangers that lurk there and one can’t help but notice a stench that makes 
 
 The FoulFest Caves is a text-based, RPG experience for one player written in Python. This project is done as a capstone
 coding and game design experience for my PTech Students. The game is based on Johann Four's Five-Room-Dungeon design
-model[^1] and counts for up to four hours of Work-Based Learning.
+model[^1] and counts for up to four hours of Work-Based Learning. The mechanics of the game are loosely based on the
+Pathfinder RPG system which is published by [Paizo, Inc.](https://paizo.com) under the [Open RPG Creative License](https://paizo.com/orclicense).
+
+![Paizo, Inc](/assets/paizo.png)
+![Pathfinder Role Playing Game](/assets/2E-Logo150.png)
 
 ### Educational Materials
 Please email Chuck using the contact info above for access to the educational materials that accompany this project.
