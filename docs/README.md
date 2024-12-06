@@ -23,6 +23,15 @@ published by [Paizo, Inc.](https://paizo.com) under the [Open RPG Creative Licen
 ![Paizo, Inc](/assets/paizo.png)
 ![Pathfinder Role Playing Game](/assets/2E-Logo150.png)
 
+### Dependancies
+This project uses two libraries:
+- the Random Library which is loaded as part of the standard Python package
+- the Colorama library to provide colorized text output to the console. Colorama is not part of the standard Python
+  package and can be installed via PIP using this command:
+    ```
+      pip install colorama
+    ```
+
 ### Educational Materials
 Please email Chuck using the contact info above for access to the educational materials that accompany this project.
 You can contribute to this project as a teacher, developing materials to bring this project to your classroom, or as
