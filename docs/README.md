@@ -25,7 +25,8 @@ published by [Paizo, Inc.](https://paizo.com) under the [Open RPG Creative Licen
 
 ### Dependancies
 This project uses two libraries:
-- the Random Library which is loaded as part of the standard Python package
+- the Random Library to provide the many versions of random dice rolls. This library is loaded as part of the standard
+    Python package,
 - the Colorama library to provide colorized text output to the console. Colorama is not part of the standard Python
   package and can be installed via PIP using this command:
     ```
