@@ -1,5 +1,5 @@
      package:   fiveRoomDungeon.py
-      author:   Charles J McDonald «cmcdonald@woonsocketschools.com»
+      author:   Charles J McDonald «github.com/cjmcdonald42»
         date:   2024.12.06
      version:   1.0 β
     maturity:   Beta, ready for public testing
@@ -43,7 +43,7 @@ To contribute, please create an issue for the enhancement or bug you would like 
 and create a branch named for the issue you are developing. When you are ready to submit your changes, create a pull
 request to merge your branch into the active development branch of this repository.
 
-[^1]: Learn more about [Johann Four and the Five Room Dungeon by clicking here](https://www.roleplayingtips.com/5-room-dungeons/).
+[^1]: Learn more about [Johann Four's Five Room Dungeon model by clicking here](https://www.roleplayingtips.com/5-room-dungeons/).
 
 ---
 _This work © 2024 by Charles J McDonald is [licensed under CC BY-NC-SA 4.0](https://github.com/cjmcdonald42/fiveRoomDungeon/blob/main/docs/LICENSE.md)_
